@@ -6,7 +6,7 @@ The project answers an early screening question: which national markets deserve 
 
 ## Deliverables
 
-- **Live site:** pending one-time Vercel account authorization
+- **Live site:** [global-energy-decision-atlas.vercel.app](https://global-energy-decision-atlas.vercel.app)
 - **Dataset:** [data/energy-data.csv](data/energy-data.csv)
 - **Methodology note:** [PDF](artifacts/global-energy-atlas-methodology.pdf) and [editable DOCX](artifacts/global-energy-atlas-methodology.docx)
 - **Five-minute presentation:** [PowerPoint](artifacts/global-energy-atlas-presentation.pptx)
