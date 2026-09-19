@@ -120,7 +120,7 @@ supabase/migrations/  schema, grants, authenticated view, and RLS policies
 scripts/              data update, protected seed, document, and deck builders
 src/                  routing, auth, state, map, analysis, localization, and tests
 e2e/                  auth, filters, insights, navigation, downloads, locale, theme, and network checks
-artifacts/            methodology DOCX/PDF, presentation, and reflection
+artifacts/            methodology DOCX/PDF, two presentations, and reflection
 ```
 
 ## Deliverables
@@ -130,14 +130,21 @@ artifacts/            methodology DOCX/PDF, presentation, and reflection
 | Published site | [Global Energy Decision Atlas](https://global-energy-decision-atlas.vercel.app) |
 | Collected dataset | Assignment 15 CSV, Expanded 50 CSV, and source manifest |
 | One-page data and methodology note | PDF and editable DOCX |
-| Five-minute site demonstration | Seven-slide PPTX and PDF with 300 seconds of speaker notes |
+| Five-minute insights and decision-use presentation | Formal seven-slide PPTX and PDF with 300 seconds of speaker notes; supplemental seven-slide site design walkthrough in PPTX and PDF |
 | Short reflection | Three-page PDF and Markdown source |
 
 - [Assignment 15 CSV](data/energy-data.csv)
 - [Expanded 50 CSV](data/expanded-energy-50-v1.csv) and [source manifest](data/expanded-energy-50-v1.sources.json)
 - [Methodology PDF](artifacts/global-energy-atlas-methodology.pdf)
 - [Editable methodology DOCX](artifacts/global-energy-atlas-methodology.docx)
-- [Site demonstration PPTX](artifacts/global-energy-atlas-site-demo.pptx) and [PDF](artifacts/global-energy-atlas-site-demo.pdf)
+- [Insights and Decision Use Presentation PPTX](artifacts/global-energy-atlas-insights-and-decision-use-presentation.pptx) and [PDF](artifacts/global-energy-atlas-insights-and-decision-use-presentation.pdf) — the formal five-minute course presentation
+- [Site Design Presentation PPTX](artifacts/global-energy-atlas-site-design-presentation.pptx) and [PDF](artifacts/global-energy-atlas-site-design-presentation.pdf) — a supplemental design walkthrough
 - [Three-page Reflection PDF](artifacts/global-energy-atlas-reflection.pdf) and [Markdown source](artifacts/reflection.md)
+
+Rebuild both presentations and both PDFs with one command after capturing current site screenshots:
+
+```bash
+npm run build:presentations
+```
 
 The production site is available at [global-energy-decision-atlas.vercel.app](https://global-energy-decision-atlas.vercel.app). Email authentication and account-owned saved views use Supabase; Google OAuth remains optional and requires its own provider configuration. External secrets are not stored in this repository.

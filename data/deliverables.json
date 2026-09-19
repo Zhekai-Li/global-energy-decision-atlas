@@ -66,19 +66,37 @@
       "id": "presentation",
       "files": [
         {
-          "id": "presentationPptx",
-          "label": "Presentation PPTX",
-          "sourcePath": "artifacts/global-energy-atlas-site-demo.pptx",
-          "downloadName": "global-energy-atlas-site-demo.pptx",
+          "id": "insightsPresentationPptx",
+          "label": "Insights and decision use presentation",
+          "sourcePath": "artifacts/global-energy-atlas-insights-and-decision-use-presentation.pptx",
+          "downloadName": "global-energy-atlas-insights-and-decision-use-presentation.pptx",
           "format": "PPTX",
           "signature": "zip",
           "browserReadable": false
         },
         {
-          "id": "presentationPdf",
-          "label": "Presentation PDF",
-          "sourcePath": "artifacts/global-energy-atlas-site-demo.pdf",
-          "downloadName": "global-energy-atlas-site-demo.pdf",
+          "id": "insightsPresentationPdf",
+          "label": "Insights and decision use presentation",
+          "sourcePath": "artifacts/global-energy-atlas-insights-and-decision-use-presentation.pdf",
+          "downloadName": "global-energy-atlas-insights-and-decision-use-presentation.pdf",
+          "format": "PDF",
+          "signature": "pdf",
+          "browserReadable": true
+        },
+        {
+          "id": "siteDesignPresentationPptx",
+          "label": "Supplemental site design walkthrough",
+          "sourcePath": "artifacts/global-energy-atlas-site-design-presentation.pptx",
+          "downloadName": "global-energy-atlas-site-design-presentation.pptx",
+          "format": "PPTX",
+          "signature": "zip",
+          "browserReadable": false
+        },
+        {
+          "id": "siteDesignPresentationPdf",
+          "label": "Supplemental site design walkthrough",
+          "sourcePath": "artifacts/global-energy-atlas-site-design-presentation.pdf",
+          "downloadName": "global-energy-atlas-site-design-presentation.pdf",
           "format": "PDF",
           "signature": "pdf",
           "browserReadable": true

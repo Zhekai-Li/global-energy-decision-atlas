@@ -74,12 +74,19 @@ describe("public and protected routes", () => {
     const names = screen
       .getAllByRole("link")
       .map((link) => link.getAttribute("download"))
-      .filter(Boolean);
+      .filter((name): name is string => Boolean(name));
     expect(names).toEqual(
       deliverableManifest.groups.flatMap((group) =>
         group.files.map((file) => file.downloadName),
       ),
     );
+    expect(names).toHaveLength(11);
+    expect(names.filter((name) => name.includes("presentation"))).toEqual([
+      "global-energy-atlas-insights-and-decision-use-presentation.pptx",
+      "global-energy-atlas-insights-and-decision-use-presentation.pdf",
+      "global-energy-atlas-site-design-presentation.pptx",
+      "global-energy-atlas-site-design-presentation.pdf",
+    ]);
   });
 
   it("redirects legacy deliverables hashes to the public route", async () => {

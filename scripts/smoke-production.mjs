@@ -44,6 +44,10 @@ try {
   );
   const links = page.locator("[data-deliverable-download]");
   if ((await links.count()) !== expected.length) throw new Error("Unexpected deliverable count");
+  if (expected.length !== 11) throw new Error(`Expected eleven deliverables, received ${expected.length}`);
+  if ((await page.locator('[data-deliverable-download*="Presentation"]').count()) !== 4) {
+    throw new Error("Expected four presentation downloads");
+  }
   for (let index = 0; index < expected.length; index += 1) {
     const [name, signature] = expected[index];
     const href = await links.nth(index).getAttribute("href");
@@ -59,6 +63,9 @@ try {
     if (signature === "json" && !bytes.toString("utf8").trimStart().startsWith("{")) throw new Error(`${name} is not JSON`);
     if (signature === "markdown" && !bytes.toString("utf8").startsWith("# ")) throw new Error(`${name} is not Markdown`);
     if (signature === "text" && !bytes.toString("utf8", 0, 80).includes(",")) throw new Error(`${name} is not CSV`);
+    // Reset Chromium's multiple-download counter while remaining on the
+    // public deliverables route.
+    await page.reload({ waitUntil: "networkidle" });
   }
 
   await page.goto(`${baseUrl}/atlas#deliverables`, { waitUntil: "networkidle" });

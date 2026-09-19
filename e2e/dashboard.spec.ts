@@ -159,6 +159,7 @@ test("all public deliverables download with stable names and valid signatures", 
   page,
   request,
 }) => {
+  test.setTimeout(120_000);
   await page.goto("/deliverables");
   await expect(page).toHaveURL(/\/deliverables$/);
   await expect(page.getByRole("heading", { name: "Five course requirements" })).toBeVisible();
@@ -170,6 +171,8 @@ test("all public deliverables download with stable names and valid signatures", 
   );
   const links = page.locator("[data-deliverable-download]");
   await expect(links).toHaveCount(expected.length);
+  await expect(links).toHaveCount(11);
+  await expect(page.locator('[data-deliverable-download*="Presentation"]')).toHaveCount(4);
   for (let index = 0; index < (await links.count()); index += 1) {
     const href = await links.nth(index).getAttribute("href");
     expect(href).toBeTruthy();
@@ -192,6 +195,10 @@ test("all public deliverables download with stable names and valid signatures", 
       expect(bytes.toString("utf8").startsWith("# ")).toBe(true);
     if (signature === "text")
       expect(bytes.toString("utf8", 0, 80)).toContain(",");
+    // Chromium limits long runs of automatic downloads per page. A reload
+    // preserves the public route while treating each verified file as a new
+    // user-initiated download.
+    await page.reload({ waitUntil: "networkidle" });
   }
 });
 

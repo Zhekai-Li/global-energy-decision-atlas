@@ -1953,9 +1953,9 @@ const supportingCopy = {
         description: "Publication-ready PDF and editable DOCX.",
       },
       presentation: {
-        title: "A five-minute presentation demonstrating the site",
+        title: "A five-minute insights and decision-use presentation",
         description:
-          "Seven slides with real product views, rationale, notes, and timing.",
+          "The formal seven-slide presentation plus a supplemental site design walkthrough, each in PPTX and PDF.",
       },
       reflection: {
         title: "A reflection on the findings and limits",
@@ -1988,8 +1988,8 @@ const supportingCopy = {
         description: "可阅读 PDF 与可编辑 DOCX。",
       },
       presentation: {
-        title: "五分钟网站演示",
-        description: "七页真实网站视图、设计依据、讲者备注和时间预算。",
+        title: "五分钟洞察与决策用途演示",
+        description: "正式七页演示与补充网站设计讲解，均提供 PPTX 和 PDF。",
       },
       reflection: {
         title: "对发现与局限的反思",
@@ -2023,9 +2023,9 @@ const supportingCopy = {
         description: "PDF listo para leer y DOCX editable.",
       },
       presentation: {
-        title: "Presentación del sitio en cinco minutos",
+        title: "Presentación de cinco minutos sobre hallazgos y decisiones",
         description:
-          "Siete diapositivas con vistas reales, criterios, notas y tiempos.",
+          "Presentación formal de siete diapositivas y recorrido complementario del diseño, ambos en PPTX y PDF.",
       },
       reflection: {
         title: "Reflexión sobre los hallazgos y límites",
@@ -2058,8 +2058,8 @@ const supportingCopy = {
         description: "PDF للقراءة وDOCX قابل للتحرير.",
       },
       presentation: {
-        title: "عرض للموقع في خمس دقائق",
-        description: "سبع شرائح بمناظر حقيقية ومبررات وملاحظات وتوقيت.",
+        title: "عرض من خمس دقائق للرؤى واستخدامها في القرار",
+        description: "عرض رسمي من سبع شرائح وجولة تكميلية لتصميم الموقع، وكلاهما بصيغتي PPTX وPDF.",
       },
       reflection: {
         title: "تأمل في النتائج والقيود",
@@ -2094,9 +2094,9 @@ const supportingCopy = {
         description: "PDF prêt à lire et DOCX modifiable.",
       },
       presentation: {
-        title: "Présentation du site en cinq minutes",
+        title: "Présentation de cinq minutes sur les constats et la décision",
         description:
-          "Sept diapositives avec vues réelles, raisons, notes et minutage.",
+          "Présentation officielle de sept diapositives et visite complémentaire du design, toutes deux en PPTX et PDF.",
       },
       reflection: {
         title: "Réflexion sur les résultats et les limites",
@@ -2130,9 +2130,9 @@ const supportingCopy = {
         description: "PDF para leitura e DOCX editável.",
       },
       presentation: {
-        title: "Apresentação do site em cinco minutos",
+        title: "Apresentação de cinco minutos sobre insights e decisões",
         description:
-          "Sete slides com telas reais, justificativa, notas e tempo.",
+          "Apresentação formal de sete slides e tour complementar do design, ambos em PPTX e PDF.",
       },
       reflection: {
         title: "Reflexão sobre resultados e limites",
@@ -2156,7 +2156,7 @@ const publicAndBoundaryCopy = {
       download: "Download",
       openAtlas: "Open atlas",
       publicTitle: "Course deliverables and source files",
-      publicIntro: "This page is public. Each required course item is listed below, followed by nine files with stable download names.",
+      publicIntro: "This page is public. Each required course item is listed below, followed by eleven files with stable download names.",
       publicAccess: "Public course files",
       requirementsEyebrow: "Submission checklist",
       requirementsTitle: "Five course requirements",
@@ -2164,7 +2164,7 @@ const publicAndBoundaryCopy = {
         site: { title: "Published site", description: "The live atlas, including guest access, filters, stories, methods, and evidence boundaries." },
         dataset: { title: "Collected dataset", description: "The original 15-country CSV, Expanded 50 CSV, and source manifest." },
         methodology: { title: "One-page data and methodology note", description: "A concise record of definitions, sources, aggregation, analytical maturity, and limitations." },
-        presentation: { title: "Five-minute site demonstration", description: "Seven slides with speaker notes totaling 300 seconds." },
+        presentation: { title: "Five-minute insights and decision-use presentation", description: "The formal seven-slide deck has speaker notes totaling 300 seconds; a separate site design deck is supplemental." },
         reflection: { title: "Short reflection", description: "Three pages on what the data supports, what it cannot prove, and the next diligence work." },
       },
     },
@@ -2183,12 +2183,12 @@ const publicAndBoundaryCopy = {
     landing: { copy: "比较 50 个市场的电价、发电结构、全国能源消费和能源平衡。图谱只用于初筛，具体选址仍需核实当地电价、合同和电网条件。", deliverablesCta: "查看课程交付物", footer: "公开课程项目" },
     nav: { evidenceBoundaries: "证据边界" },
     deliverables: {
-      open: "打开", download: "下载", openAtlas: "打开图谱", publicTitle: "课程交付物与源文件", publicIntro: "本页面无需登录。下方列出五项课程要求以及九个采用稳定文件名的下载文件。", publicAccess: "公开课程文件", requirementsEyebrow: "提交清单", requirementsTitle: "五项课程要求",
+      open: "打开", download: "下载", openAtlas: "打开图谱", publicTitle: "课程交付物与源文件", publicIntro: "本页面无需登录。下方列出五项课程要求以及十一个采用稳定文件名的下载文件。", publicAccess: "公开课程文件", requirementsEyebrow: "提交清单", requirementsTitle: "五项课程要求",
       requirements: {
         site: { title: "已发布网站", description: "可通过访客模式使用图谱、筛选、故事视图、方法说明和证据边界。" },
         dataset: { title: "采集的数据集", description: "原始 15 国 CSV、扩展 50 国 CSV 和来源清单。" },
         methodology: { title: "单页数据与方法说明", description: "记录定义、来源、聚合规则、分析成熟度和局限。" },
-        presentation: { title: "五分钟网站演示", description: "七页演示稿，讲者备注总计 300 秒。" },
+        presentation: { title: "五分钟洞察与决策用途演示", description: "正式七页演示的讲者备注总计 300 秒；网站设计演示为独立补充材料。" },
         reflection: { title: "简短反思", description: "三页说明数据支持什么、不能证明什么以及下一轮尽调。" },
       },
     },
@@ -2204,12 +2204,12 @@ const publicAndBoundaryCopy = {
     landing: { copy: "Compare precios eléctricos, mezcla de generación, consumo nacional y balance energético en 50 mercados. Use el atlas como filtro y verifique tarifas, contratos y red en cada sitio.", deliverablesCta: "Ver entregables", footer: "Proyecto público del curso" },
     nav: { evidenceBoundaries: "Límites de la evidencia" },
     deliverables: {
-      open: "Abrir", download: "Descargar", openAtlas: "Abrir atlas", publicTitle: "Entregables y archivos fuente", publicIntro: "Esta página es pública. Incluye los cinco requisitos del curso y nueve archivos con nombres de descarga estables.", publicAccess: "Archivos públicos del curso", requirementsEyebrow: "Lista de entrega", requirementsTitle: "Cinco requisitos del curso",
+      open: "Abrir", download: "Descargar", openAtlas: "Abrir atlas", publicTitle: "Entregables y archivos fuente", publicIntro: "Esta página es pública. Incluye los cinco requisitos del curso y once archivos con nombres de descarga estables.", publicAccess: "Archivos públicos del curso", requirementsEyebrow: "Lista de entrega", requirementsTitle: "Cinco requisitos del curso",
       requirements: {
         site: { title: "Sitio publicado", description: "Atlas con acceso de invitado, filtros, historias, método y límites de evidencia." },
         dataset: { title: "Datos recopilados", description: "CSV original de 15 países, CSV ampliado de 50 países y manifiesto de fuentes." },
         methodology: { title: "Nota de datos y método de una página", description: "Definiciones, fuentes, agregación, madurez analítica y limitaciones." },
-        presentation: { title: "Demostración de cinco minutos", description: "Siete diapositivas con notas que suman 300 segundos." },
+        presentation: { title: "Presentación de cinco minutos sobre hallazgos y decisiones", description: "La presentación formal de siete diapositivas suma 300 segundos; el recorrido del diseño es complementario." },
         reflection: { title: "Reflexión breve", description: "Tres páginas sobre lo que los datos apoyan, lo que no prueban y la diligencia siguiente." },
       },
     },
@@ -2225,12 +2225,12 @@ const publicAndBoundaryCopy = {
     landing: { copy: "قارن أسعار الكهرباء ومزيج التوليد والاستهلاك الوطني وميزان الطاقة في 50 سوقًا. استخدم الأطلس للفحص الأولي ثم تحقق من التعرفة والعقود والشبكة في الموقع.", deliverablesCta: "عرض تسليمات المقرر", footer: "مشروع مقرر عام" },
     nav: { evidenceBoundaries: "حدود الأدلة" },
     deliverables: {
-      open: "فتح", download: "تنزيل", openAtlas: "فتح الأطلس", publicTitle: "تسليمات المقرر وملفات المصدر", publicIntro: "هذه الصفحة متاحة من دون تسجيل دخول. تعرض متطلبات المقرر الخمسة وتسعة ملفات بأسماء تنزيل ثابتة.", publicAccess: "ملفات مقرر عامة", requirementsEyebrow: "قائمة التسليم", requirementsTitle: "متطلبات المقرر الخمسة",
+      open: "فتح", download: "تنزيل", openAtlas: "فتح الأطلس", publicTitle: "تسليمات المقرر وملفات المصدر", publicIntro: "هذه الصفحة متاحة من دون تسجيل دخول. تعرض متطلبات المقرر الخمسة وأحد عشر ملفًا بأسماء تنزيل ثابتة.", publicAccess: "ملفات مقرر عامة", requirementsEyebrow: "قائمة التسليم", requirementsTitle: "متطلبات المقرر الخمسة",
       requirements: {
         site: { title: "الموقع المنشور", description: "الأطلس مع دخول الضيف والفلاتر والقصص والمنهج وحدود الأدلة." },
         dataset: { title: "مجموعة البيانات", description: "ملف 15 دولة الأصلي وملف 50 دولة وبيان المصادر." },
         methodology: { title: "مذكرة بيانات ومنهجية من صفحة", description: "التعريفات والمصادر والتجميع ونضج التحليل والقيود." },
-        presentation: { title: "عرض الموقع في خمس دقائق", description: "سبع شرائح مع ملاحظات يبلغ مجموعها 300 ثانية." },
+        presentation: { title: "عرض من خمس دقائق للرؤى واستخدامها في القرار", description: "تبلغ ملاحظات العرض الرسمي ذي الشرائح السبع 300 ثانية، أما عرض تصميم الموقع فهو تكميلي." },
         reflection: { title: "تأمل قصير", description: "ثلاث صفحات عما تدعمه البيانات وما لا تثبته والعمل التالي." },
       },
     },
@@ -2246,12 +2246,12 @@ const publicAndBoundaryCopy = {
     landing: { copy: "Comparez les prix de l’électricité, le mix de production, la consommation nationale et le bilan énergétique de 50 marchés. Utilisez l’atlas comme filtre, puis vérifiez les tarifs, contrats et conditions de réseau du site.", deliverablesCta: "Voir les livrables", footer: "Projet de cours public" },
     nav: { evidenceBoundaries: "Limites des preuves" },
     deliverables: {
-      open: "Ouvrir", download: "Télécharger", openAtlas: "Ouvrir l’atlas", publicTitle: "Livrables et fichiers sources", publicIntro: "Cette page est publique. Elle présente les cinq exigences du cours et neuf fichiers aux noms de téléchargement stables.", publicAccess: "Fichiers publics du cours", requirementsEyebrow: "Liste de remise", requirementsTitle: "Cinq exigences du cours",
+      open: "Ouvrir", download: "Télécharger", openAtlas: "Ouvrir l’atlas", publicTitle: "Livrables et fichiers sources", publicIntro: "Cette page est publique. Elle présente les cinq exigences du cours et onze fichiers aux noms de téléchargement stables.", publicAccess: "Fichiers publics du cours", requirementsEyebrow: "Liste de remise", requirementsTitle: "Cinq exigences du cours",
       requirements: {
         site: { title: "Site publié", description: "Atlas avec accès invité, filtres, récits, méthode et limites des preuves." },
         dataset: { title: "Données collectées", description: "CSV original de 15 pays, CSV étendu de 50 pays et manifeste des sources." },
         methodology: { title: "Note de données et méthode sur une page", description: "Définitions, sources, agrégation, maturité analytique et limites." },
-        presentation: { title: "Démonstration de cinq minutes", description: "Sept diapositives avec des notes totalisant 300 secondes." },
+        presentation: { title: "Présentation de cinq minutes sur les constats et la décision", description: "La présentation officielle de sept diapositives totalise 300 secondes ; la visite du design est complémentaire." },
         reflection: { title: "Courte réflexion", description: "Trois pages sur ce que les données soutiennent, ne prouvent pas et les vérifications suivantes." },
       },
     },
@@ -2267,12 +2267,12 @@ const publicAndBoundaryCopy = {
     landing: { copy: "Compare preços de eletricidade, matriz de geração, consumo nacional e balanço energético em 50 mercados. Use o atlas como triagem e confirme tarifas, contratos e rede em cada local.", deliverablesCta: "Ver entregáveis", footer: "Projeto público do curso" },
     nav: { evidenceBoundaries: "Limites das evidências" },
     deliverables: {
-      open: "Abrir", download: "Baixar", openAtlas: "Abrir atlas", publicTitle: "Entregáveis e arquivos de origem", publicIntro: "Esta página é pública. Ela lista os cinco requisitos do curso e nove arquivos com nomes de download estáveis.", publicAccess: "Arquivos públicos do curso", requirementsEyebrow: "Lista de entrega", requirementsTitle: "Cinco requisitos do curso",
+      open: "Abrir", download: "Baixar", openAtlas: "Abrir atlas", publicTitle: "Entregáveis e arquivos de origem", publicIntro: "Esta página é pública. Ela lista os cinco requisitos do curso e onze arquivos com nomes de download estáveis.", publicAccess: "Arquivos públicos do curso", requirementsEyebrow: "Lista de entrega", requirementsTitle: "Cinco requisitos do curso",
       requirements: {
         site: { title: "Site publicado", description: "Atlas com acesso de visitante, filtros, histórias, método e limites das evidências." },
         dataset: { title: "Dados coletados", description: "CSV original de 15 países, CSV ampliado de 50 países e manifesto de fontes." },
         methodology: { title: "Nota de dados e método em uma página", description: "Definições, fontes, agregação, maturidade analítica e limitações." },
-        presentation: { title: "Demonstração de cinco minutos", description: "Sete slides com notas que totalizam 300 segundos." },
+        presentation: { title: "Apresentação de cinco minutos sobre insights e decisões", description: "A apresentação formal de sete slides soma 300 segundos; o tour de design é complementar." },
         reflection: { title: "Reflexão curta", description: "Três páginas sobre o que os dados apoiam, o que não provam e a próxima diligência." },
       },
     },

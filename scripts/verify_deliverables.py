@@ -51,6 +51,28 @@ def normalized(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip().lower()
 
 
+def pptx_text_and_counts(path: Path) -> tuple[str, int, int]:
+    with zipfile.ZipFile(path) as archive:
+        slides = [name for name in archive.namelist() if re.fullmatch(r"ppt/slides/slide\d+\.xml", name)]
+        notes = [name for name in archive.namelist() if re.fullmatch(r"ppt/notesSlides/notesSlide\d+\.xml", name)]
+    text = normalized(xml_text_from_zip(path, "ppt/slides/") + "\n" + xml_text_from_zip(path, "ppt/notesSlides/"))
+    return text, len(slides), len(notes)
+
+
+def require_signature(path: Path, signature: str) -> None:
+    prefix = path.read_bytes()[:128]
+    if signature == "pdf":
+        require(prefix.startswith(b"%PDF"), f"{path.name} is not a PDF")
+    elif signature == "zip":
+        require(prefix.startswith(b"PK"), f"{path.name} is not a ZIP container")
+    elif signature == "json":
+        require(prefix.lstrip().startswith((b"{", b"[")), f"{path.name} is not JSON")
+    elif signature == "markdown":
+        require(prefix.startswith(b"# "), f"{path.name} is not Markdown")
+    elif signature == "text":
+        require(b"," in prefix, f"{path.name} is not CSV text")
+
+
 summary = json.loads((ARTIFACTS / "analysis-summary.json").read_text(encoding="utf-8"))
 statuses = {level: boundary["status"] for level, boundary in summary["evidenceBoundaries"].items()}
 require(statuses == EXPECTED_STATUSES, f"Unexpected evidence boundary statuses: {statuses}")
@@ -60,10 +82,24 @@ for boundary in summary["evidenceBoundaries"].values():
 manifest = json.loads((ROOT / "data" / "deliverables.json").read_text(encoding="utf-8"))
 files = [item for group in manifest["groups"] for item in group["files"]]
 require(len(manifest["requirements"]) == 5, "The course checklist must contain five requirements")
-require(len(files) == 9, "The public manifest must contain nine files")
-require(len({item["downloadName"] for item in files}) == 9, "Download names must be unique")
+require(len(files) == 11, "The public manifest must contain eleven files")
+require(len({item["downloadName"] for item in files}) == 11, "Download names must be unique")
 for item in files:
-    require((ROOT / item["sourcePath"]).is_file(), f"Missing deliverable: {item['sourcePath']}")
+    path = ROOT / item["sourcePath"]
+    require(path.is_file(), f"Missing deliverable: {item['sourcePath']}")
+    require_signature(path, item["signature"])
+
+presentation_group = next(group for group in manifest["groups"] if group["id"] == "presentation")
+require(
+    [item["id"] for item in presentation_group["files"]] == [
+        "insightsPresentationPptx",
+        "insightsPresentationPdf",
+        "siteDesignPresentationPptx",
+        "siteDesignPresentationPdf",
+    ],
+    "Presentation downloads must lead with the formal Insights deck",
+)
+require(not any("site-demo" in item["downloadName"] for item in files), "Legacy site-demo download names remain")
 
 reflection_markdown = (ARTIFACTS / "reflection.md").read_text(encoding="utf-8")
 reflection_words = re.findall(r"\b[\w'-]+\b", re.sub(r"<!--.*?-->|^#+\s+", "", reflection_markdown, flags=re.MULTILINE))
@@ -84,15 +120,36 @@ method_docx_text = normalized(xml_text_from_zip(ARTIFACTS / "global-energy-atlas
 reflection_text = normalized(reflection_markdown + "\n" + pdf_text(reflection_pdf))
 method_text = normalized(method_docx_text + "\n" + pdf_text(method_pdf))
 
-pptx = ARTIFACTS / "global-energy-atlas-site-demo.pptx"
-with zipfile.ZipFile(pptx) as archive:
-    slides = [name for name in archive.namelist() if re.fullmatch(r"ppt/slides/slide\d+\.xml", name)]
-    notes = [name for name in archive.namelist() if re.fullmatch(r"ppt/notesSlides/notesSlide\d+\.xml", name)]
-require(len(slides) == 7, f"Presentation contains {len(slides)} slides")
-require(len(notes) == 7, f"Presentation contains {len(notes)} note pages")
-presentation_text = normalized(xml_text_from_zip(pptx, "ppt/slides/") + "\n" + xml_text_from_zip(pptx, "ppt/notesSlides/"))
+insights_pptx = ARTIFACTS / "global-energy-atlas-insights-and-decision-use-presentation.pptx"
+design_pptx = ARTIFACTS / "global-energy-atlas-site-design-presentation.pptx"
+presentation_text, insight_slides, insight_notes = pptx_text_and_counts(insights_pptx)
+design_text, design_slides, design_notes = pptx_text_and_counts(design_pptx)
+require(insight_slides == 7, f"Insights presentation contains {insight_slides} slides")
+require(insight_notes == 7, f"Insights presentation contains {insight_notes} note pages")
+require(design_slides == 7, f"Site Design presentation contains {design_slides} slides")
+require(design_notes == 7, f"Site Design presentation contains {design_notes} note pages")
 timings = [int(value) for value in re.findall(r"time budget:\s*(\d+)\s*seconds", presentation_text)]
-require(len(timings) == 7 and sum(timings) == 300, f"Presentation timings are {timings}")
+require(timings == [35, 40, 45, 45, 45, 50, 40], f"Insights presentation timings are {timings}")
+design_timings = [int(value) for value in re.findall(r"time budget:\s*(\d+)\s*seconds", design_text)]
+require(len(design_timings) == 7, f"Site Design timings are {design_timings}")
+for heading in (
+    "which markets deserve deeper energy diligence",
+    "data scope and general observations",
+    "price and generation contrasts",
+    "consumption concentration",
+    "energy balance positions",
+    "decision use and diligence shortlist",
+    "method, evidence boundaries, and limitations",
+):
+    require(heading in presentation_text, f"Insights presentation omits {heading}")
+require("supplemental design walkthrough" in design_text, "Site Design cover is not identified as supplemental")
+require("five-minute site demonstration" not in design_text, "Site Design deck still claims to be the formal demonstration")
+
+for pdf_name in (
+    "global-energy-atlas-insights-and-decision-use-presentation.pdf",
+    "global-energy-atlas-site-design-presentation.pdf",
+):
+    require("Pages:           7" in pdf_info(ARTIFACTS / pdf_name), f"{pdf_name} must have seven pages")
 
 readme_text = normalized((ROOT / "README.md").read_text(encoding="utf-8"))
 site_text = normalized((ROOT / "src" / "i18n.ts").read_text(encoding="utf-8") + "\n" + (ROOT / "src" / "pages" / "AtlasPage.tsx").read_text(encoding="utf-8"))
@@ -109,7 +166,8 @@ for label, text in {
     for claim in CORE_LIMITS:
         require(claim in text, f"{label} omits core limit: {claim}")
 
-require("evidence boundaries and deliverables" in presentation_text, "Presentation slide seven title is missing")
+require("method, evidence boundaries, and limitations" in presentation_text, "Insights slide seven title is missing")
+require("evidence boundaries and deliverables" in design_text, "Site Design slide seven title is missing")
 require("/deliverables" in presentation_text and "/deliverables" in readme_text, "Public Deliverables URL is missing")
 
 print(json.dumps({
@@ -118,7 +176,9 @@ print(json.dumps({
     "reflectionWords": len(reflection_words),
     "reflectionPages": 3,
     "methodologyPages": 1,
-    "slides": len(slides),
-    "notes": len(notes),
+    "insightsSlides": insight_slides,
+    "insightsNotes": insight_notes,
     "seconds": sum(timings),
+    "siteDesignSlides": design_slides,
+    "siteDesignNotes": design_notes,
 }, indent=2))

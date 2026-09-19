@@ -4,8 +4,10 @@ import expandedCsv from "../data/expanded-energy-50-v1.csv?url";
 import sourceManifest from "../data/expanded-energy-50-v1.sources.json?url&no-inline";
 import methodologyPdf from "../artifacts/global-energy-atlas-methodology.pdf?url";
 import methodologyDocx from "../artifacts/global-energy-atlas-methodology.docx?url";
-import presentationPptx from "../artifacts/global-energy-atlas-site-demo.pptx?url";
-import presentationPdf from "../artifacts/global-energy-atlas-site-demo.pdf?url";
+import insightsPresentationPptx from "../artifacts/global-energy-atlas-insights-and-decision-use-presentation.pptx?url";
+import insightsPresentationPdf from "../artifacts/global-energy-atlas-insights-and-decision-use-presentation.pdf?url";
+import siteDesignPresentationPptx from "../artifacts/global-energy-atlas-site-design-presentation.pptx?url";
+import siteDesignPresentationPdf from "../artifacts/global-energy-atlas-site-design-presentation.pdf?url";
 import reflectionPdf from "../artifacts/global-energy-atlas-reflection.pdf?url";
 import reflectionMarkdown from "../artifacts/reflection.md?url";
 
@@ -15,8 +17,10 @@ const urls = {
   sourceManifest,
   methodologyPdf,
   methodologyDocx,
-  presentationPptx,
-  presentationPdf,
+  insightsPresentationPptx,
+  insightsPresentationPdf,
+  siteDesignPresentationPptx,
+  siteDesignPresentationPdf,
   reflectionPdf,
   reflectionMarkdown,
 } as const;

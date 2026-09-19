@@ -85,6 +85,9 @@ await page.evaluate(() => {
 await page
   .locator("#stories")
   .screenshot({ path: path.join(output, "04-stories.png") });
+await page
+  .locator("#stories")
+  .screenshot({ path: path.join(output, "insights-story-views.png") });
 await page.evaluate(() => {
   for (const selector of [".atlas-header", ".skip-link"]) {
     const element = document.querySelector(selector);
@@ -97,14 +100,43 @@ for (const [selector, name] of [
   ["#signals", "05-signals.png"],
   ["#charts", "06-charts.png"],
   ["#evidence", "07-evidence.png"],
+  ["#evidence", "insights-scope-evidence.png"],
 ]) {
   await page.locator(selector).scrollIntoViewIfNeeded();
   await settle();
   await page.locator(selector).screenshot({ path: path.join(output, name) });
 }
 
+const insightStories = [
+  ["europe-price-peak", "europe", false],
+  ["ethiopia-price-structure", "ethiopia", false],
+  ["china-us-consumption", "consumption", true],
+  ["energy-balance-split", "balance", true],
+];
+for (const [id, name, includeCharts] of insightStories) {
+  const card = page.getByTestId(`story-${id}`);
+  await card.getByRole("button", { name: /Open this view|View active/ }).click();
+  await page.locator("#signals").scrollIntoViewIfNeeded();
+  await settle();
+  await page
+    .locator("#signals")
+    .screenshot({ path: path.join(output, `insights-${name}-signals.png`) });
+  if (includeCharts) {
+    await page.locator("#charts").scrollIntoViewIfNeeded();
+    await settle();
+    await page
+      .locator("#charts")
+      .screenshot({ path: path.join(output, `insights-${name}-charts.png`) });
+  }
+}
+
 await page.goto(`${siteUrl}/deliverables`, { waitUntil: "networkidle" });
 await settle();
+await page.evaluate(() => {
+  if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+  const skipLink = document.querySelector(".skip-link");
+  if (skipLink instanceof HTMLElement) skipLink.style.display = "none";
+});
 await page.locator("#deliverables").scrollIntoViewIfNeeded();
 await page
   .locator("#deliverables")
