@@ -1,0 +1,63 @@
+{
+  "dataset": "expanded-50",
+  "version": 1,
+  "accessedDate": "2026-09-17",
+  "rows": 50,
+  "sha256": "35794da74c57d8571fe2d28645622c3c5c2a0716b372154bd76ad96aca7aa4cf",
+  "selection": {
+    "energyYear": 2023,
+    "productionYear": 2023,
+    "latestEiaProductionCoverageYear": 2024,
+    "minimumCoverage": 0.9,
+    "maximumFallbackYears": 2
+  },
+  "sources": [
+    {
+      "id": "global-petrol-prices",
+      "url": "https://www.globalpetrolprices.com/electricity_prices/",
+      "measure": "Public 2023-2026 residential and business USD/kWh averages"
+    },
+    {
+      "id": "owid-energy",
+      "url": "https://owid-public.owid.io/data/energy/owid-energy-data.csv",
+      "measure": "Primary energy consumption and electricity generation mix"
+    },
+    {
+      "id": "eia-international",
+      "url": "https://api.eia.gov/bulk/INTL.zip",
+      "measure": "Total energy production"
+    }
+  ],
+  "contextSources": [
+    {
+      "id": "iea-italy-2023",
+      "url": "https://www.iea.org/reports/italy-2023/executive-summary",
+      "use": "Market context for Italy's electricity system and policy setting"
+    },
+    {
+      "id": "eurostat-energy-data",
+      "url": "https://ec.europa.eu/eurostat/en/web/energy/information-data",
+      "use": "Market context for the components of European electricity prices"
+    },
+    {
+      "id": "world-bank-ethiopia-energy-compact",
+      "url": "https://www.worldbank.org/content/dam/theworldbankgroupasset/document/2026/Ethiopia-National-Energy-Compact-Mission-300.pdf",
+      "use": "Market context for Ethiopia's power system and access program"
+    },
+    {
+      "id": "iea-electricity-2025",
+      "url": "https://www.iea.org/reports/electricity-2025/executive-summary",
+      "use": "Market context for electricity demand and supply in China"
+    },
+    {
+      "id": "eia-us-energy-balance-2023",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=62407",
+      "use": "Market context for the United States 2023 energy balance"
+    },
+    {
+      "id": "eia-russia-country-analysis",
+      "url": "https://www.eia.gov/international/content/analysis/countries_long/russia/",
+      "use": "Market context for Russia's energy production and exports"
+    }
+  ]
+}

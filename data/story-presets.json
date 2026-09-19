@@ -1,0 +1,62 @@
+[
+  {
+    "id": "europe-price-peak",
+    "storyDataKey": "europePricePeak",
+    "config": {
+      "datasetScope": "expanded-50",
+      "selectionMode": "countries",
+      "regionIds": ["global"],
+      "countryCodes": ["ITA", "DEU", "BEL", "CHE", "DNK"],
+      "focusCountryCodes": ["ITA", "DEU", "BEL", "CHE", "DNK"],
+      "regionDisplayMode": "members",
+      "priceAudience": "household",
+      "mapMetric": "price",
+      "sortMetric": "price"
+    }
+  },
+  {
+    "id": "ethiopia-price-structure",
+    "storyDataKey": "ethiopiaPriceStructure",
+    "config": {
+      "datasetScope": "expanded-50",
+      "selectionMode": "countries",
+      "regionIds": ["global"],
+      "countryCodes": ["ETH", "ISL", "NOR", "DZA", "ITA"],
+      "focusCountryCodes": ["ETH", "ISL", "NOR", "DZA", "ITA"],
+      "regionDisplayMode": "members",
+      "priceAudience": "household",
+      "mapMetric": "nonFossil",
+      "sortMetric": "nonFossil"
+    }
+  },
+  {
+    "id": "china-us-consumption",
+    "storyDataKey": "chinaUsConsumption",
+    "config": {
+      "datasetScope": "expanded-50",
+      "selectionMode": "countries",
+      "regionIds": ["global"],
+      "countryCodes": ["CHN", "USA", "IND", "RUS", "JPN"],
+      "focusCountryCodes": ["CHN", "USA", "IND", "RUS", "JPN"],
+      "regionDisplayMode": "members",
+      "priceAudience": "household",
+      "mapMetric": "consumption",
+      "sortMetric": "consumption"
+    }
+  },
+  {
+    "id": "energy-balance-split",
+    "storyDataKey": "energyBalanceSplit",
+    "config": {
+      "datasetScope": "expanded-50",
+      "selectionMode": "countries",
+      "regionIds": ["global"],
+      "countryCodes": ["CHN", "RUS", "USA", "IND", "JPN"],
+      "focusCountryCodes": ["CHN", "RUS", "USA", "IND", "JPN"],
+      "regionDisplayMode": "members",
+      "priceAudience": "household",
+      "mapMetric": "tradeExposure",
+      "sortMetric": "tradeExposure"
+    }
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "requirements": [
+    { "id": "site", "number": 1 },
+    { "id": "dataset", "number": 2 },
+    { "id": "methodology", "number": 3 },
+    { "id": "presentation", "number": 4 },
+    { "id": "reflection", "number": 5 }
+  ],
+  "groups": [
+    {
+      "id": "dataset",
+      "files": [
+        {
+          "id": "assignmentCsv",
+          "label": "Assignment 15 CSV",
+          "sourcePath": "data/energy-data.csv",
+          "downloadName": "global-energy-atlas-assignment-15.csv",
+          "format": "CSV",
+          "signature": "text",
+          "browserReadable": true
+        },
+        {
+          "id": "expandedCsv",
+          "label": "Expanded 50 CSV",
+          "sourcePath": "data/expanded-energy-50-v1.csv",
+          "downloadName": "global-energy-atlas-expanded-50.csv",
+          "format": "CSV",
+          "signature": "text",
+          "browserReadable": true
+        },
+        {
+          "id": "sourceManifest",
+          "label": "Source manifest",
+          "sourcePath": "data/expanded-energy-50-v1.sources.json",
+          "downloadName": "global-energy-atlas-sources.json",
+          "format": "JSON",
+          "signature": "json",
+          "browserReadable": true
+        }
+      ]
+    },
+    {
+      "id": "methodology",
+      "files": [
+        {
+          "id": "methodologyPdf",
+          "label": "Methodology PDF",
+          "sourcePath": "artifacts/global-energy-atlas-methodology.pdf",
+          "downloadName": "global-energy-atlas-methodology.pdf",
+          "format": "PDF",
+          "signature": "pdf",
+          "browserReadable": true
+        },
+        {
+          "id": "methodologyDocx",
+          "label": "Editable methodology",
+          "sourcePath": "artifacts/global-energy-atlas-methodology.docx",
+          "downloadName": "global-energy-atlas-methodology.docx",
+          "format": "DOCX",
+          "signature": "zip",
+          "browserReadable": false
+        }
+      ]
+    },
+    {
+      "id": "presentation",
+      "files": [
+        {
+          "id": "presentationPptx",
+          "label": "Presentation PPTX",
+          "sourcePath": "artifacts/global-energy-atlas-site-demo.pptx",
+          "downloadName": "global-energy-atlas-site-demo.pptx",
+          "format": "PPTX",
+          "signature": "zip",
+          "browserReadable": false
+        },
+        {
+          "id": "presentationPdf",
+          "label": "Presentation PDF",
+          "sourcePath": "artifacts/global-energy-atlas-site-demo.pdf",
+          "downloadName": "global-energy-atlas-site-demo.pdf",
+          "format": "PDF",
+          "signature": "pdf",
+          "browserReadable": true
+        }
+      ]
+    },
+    {
+      "id": "reflection",
+      "files": [
+        {
+          "id": "reflectionPdf",
+          "label": "Reflection PDF",
+          "sourcePath": "artifacts/global-energy-atlas-reflection.pdf",
+          "downloadName": "global-energy-atlas-reflection.pdf",
+          "format": "PDF",
+          "signature": "pdf",
+          "browserReadable": true
+        },
+        {
+          "id": "reflectionMarkdown",
+          "label": "Reflection Markdown",
+          "sourcePath": "artifacts/reflection.md",
+          "downloadName": "global-energy-atlas-reflection.md",
+          "format": "Markdown",
+          "signature": "markdown",
+          "browserReadable": true
+        }
+      ]
+    }
+  ]
+}

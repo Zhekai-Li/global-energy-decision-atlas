@@ -6,3 +6,7 @@ test-results/
 .DS_Store
 .vercel/
 tmp/
+.env
+.env.local
+.env.*.local
+.codex-finalizer/

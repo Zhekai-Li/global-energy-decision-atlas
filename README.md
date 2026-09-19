@@ -1,70 +1,105 @@
 # Global Energy Decision Atlas
 
-Global Energy Decision Atlas is a static decision-support site for business energy and sustainability teams comparing operating-cost, electricity-source, consumption, and import-risk tradeoffs across 15 countries.
+Global Energy Decision Atlas is a React decision-support application for comparing national electricity prices, generation mix, total energy consumption, and energy trade or balance exposure. It supports the original 15-country assignment data and a separate 50-country snapshot.
 
-The project answers an early screening question: which national markets deserve facility-level energy diligence? It does not collapse unlike measures into a composite score or imply that the cross-sectional data proves causation.
+Visitors can continue as guests and use the complete atlas without creating an account. Guests can explore both datasets, change filters, and download results, but their customized views and activity history are not stored. Signed-in users receive the same analysis plus synchronized profile preferences and up to 25 private saved views. The Supabase service-role key is never exposed to the browser.
 
-## Deliverables
+Public course files are available without sign-in at [global-energy-decision-atlas.vercel.app/deliverables](https://global-energy-decision-atlas.vercel.app/deliverables).
 
-- **Live site:** [global-energy-decision-atlas.vercel.app](https://global-energy-decision-atlas.vercel.app)
-- **Dataset:** [data/energy-data.csv](data/energy-data.csv)
-- **Methodology note:** [PDF](artifacts/global-energy-atlas-methodology.pdf) and [editable DOCX](artifacts/global-energy-atlas-methodology.docx)
-- **Five-minute presentation:** [PowerPoint](artifacts/global-energy-atlas-presentation.pptx)
-- **Reflection:** [artifacts/reflection.md](artifacts/reflection.md)
-- **Assignment brief:** [doc/Lesson 03 — Information Web Site.pdf](doc/Lesson%2003%20%E2%80%94%20Information%20Web%20Site.pdf)
+## What is included
 
-## Dashboard
-
-The default comparison uses the United States, Germany, Brazil, and Indonesia. A user can choose up to four countries, switch between household and business retail prices, and sort the detailed table by price, national consumption, non-fossil electricity share, or net imports.
-
-The site includes:
-
-- a price versus non-fossil electricity scatterplot, with bubble area representing total national energy consumption;
-- a stacked comparison of domestic electricity generation sources;
-- a diverging total-energy net import chart;
-- a sortable evidence table with reference periods, units, missing-value treatment, and CSV download;
-- selection-specific KPIs and findings;
-- practical recommendations, methodology, source links, and limitations;
-- an optional demo role that stores only the role and dashboard preferences in `localStorage`.
+- Guest access plus optional email and password registration, confirmation, sign-in, and password recovery through Supabase Auth
+- Optional Google OAuth integration and database row-level security for account-owned records
+- Assignment 15 and Expanded 50 data scopes
+- Full country or regional scope with an eight-country focus list
+- Four-region comparison with member and aggregate modes
+- An offline SVG world map from the packaged `world-atlas` boundaries
+- Price, non-fossil share, consumption, and trade or balance map metrics
+- A filter rail that expands on hover, focus, or click, can be pinned on desktop, and becomes a touch drawer on smaller screens
+- Dynamic selection insights for benchmarks, cost-and-mix tradeoffs, concentration or exposure, and data confidence
+- Four fixed story views that apply reproducible country, focus, metric, and sort configurations without creating a saved view
+- Active-dataset median reference lines and narrative explanations beneath the comparison charts
+- Light, dark, and system themes
+- English, Simplified Chinese, Spanish, Arabic, French, and Brazilian Portuguese, including RTL layout for Arabic
+- Stable English CSV fields and ISO3 codes
+- Up to 25 private saved views per account
 
 ## Data
 
-The assignment supplied the sole analytical CSV through Google Drive. The file is stored unchanged at [data/energy-data.csv](data/energy-data.csv) and imported into the production bundle as raw text. The application makes no runtime data or API requests.
+The two scopes deliberately retain different trade definitions.
 
-| Property | Value |
-| --- | --- |
-| Source | [Assignment-supplied Google Drive file](https://drive.google.com/file/d/1IH_jMJhRQglxaVP0jpVC_D6l3oU_ZoJu/view?usp=sharing) |
-| Accessed | 17 September 2026 |
-| Rows | 15 country records |
-| Columns | 49 |
-| SHA-256 | `c6a83dd39fd0215a4ddcf5d11e15f6b3c36197230b326c2425588ee8067e7caa` |
+| Scope | Countries | Trade field | Browser delivery |
+| --- | ---: | --- | --- |
+| Assignment 15 | 15 | Reported total energy net imports from the supplied file | Validated guest snapshot or authenticated database query |
+| Expanded 50 | 50 | Primary energy consumption minus total energy production | Validated guest snapshot or authenticated database query |
 
-The parser validates the country and column counts, the schema and URLs, numeric ranges, electricity and primary-energy mix totals within rounding tolerance, and the known missing Iranian household and business prices.
+The original [Assignment 15 CSV](data/energy-data.csv) remains unchanged. Its SHA-256 is `c6a83dd39fd0215a4ddcf5d11e15f6b3c36197230b326c2425588ee8067e7caa`.
 
-Derived measures are intentionally simple:
+The versioned [Expanded 50 CSV](data/expanded-energy-50-v1.csv) is generated from the public GlobalPetrolPrices comparison table, the OWID Energy CSV, and EIA International bulk data. Its [source manifest](data/expanded-energy-50-v1.sources.json) records the source URLs, access date, selected years, fallback policy, and checksum.
 
-- non-fossil electricity = solar + wind + hydro + other;
-- fossil electricity = oil and other fossil + gas + coal;
-- net imports = gross imports − gross exports.
+The manifest keeps raw data sources separate from `contextSources`. Context links from the IEA, Eurostat, World Bank, and EIA support cautious market interpretation but do not change the source data or its checksum. [Story presets](data/story-presets.json) contain the fixed analysis configurations used by the site, analysis summary, reflection, and presentation.
 
-See [data/README.md](data/README.md) and the [methodology note](artifacts/global-energy-atlas-methodology.pdf) for field definitions, reference dates, and interpretation boundaries.
+Run a manual refresh with:
 
-## Limitations
+```bash
+npm run data:update
+```
 
-The measures use mixed reference periods: total energy trade is from 2023, consumption and electricity generation mix are from 2024, and retail prices are for December 2025. Consumption is an absolute national total rather than per capita. USD retail prices inherit source exchange-rate uncertainty. The residual “other” generation category includes nuclear power and other renewables. Iran has no reported retail prices. The 15-country set is useful for comparison but is not a global census.
+The update fails before writing output if a required source column or price table marker changes, if coverage falls below 90 percent, or if any validation rule fails. A country may fall back by no more than two years.
 
-The data can support screening and question formation. It cannot show that a generation mix causes a retail price, predict tariffs, or establish a location’s grid reliability.
+## Regional calculations
+
+Regional residential and business prices use the unweighted median of reported members and show `n/N` coverage. Consumption and the trade or balance field are summed. Electricity source shares are weighted by domestic generation. Missing values are excluded from each calculation and never treated as zero.
+
+Expanded 50 uses an energy balance gap:
+
+```text
+primary energy consumption - total energy production
+```
+
+This is a screening proxy, not a direct observation of net imports.
+
+## Analysis boundaries
+
+| Analysis level | Status | Supported use | What the atlas does not prove |
+| --- | --- | --- | --- |
+| Descriptive | Performed | Coverage, extrema, rankings, concentration, complete-case correlations, and fixed-market comparisons | Causation, future outcomes, or an optimal market |
+| Diagnostic | Partial | Associations and external context can form hypotheses and local diligence questions | Why an observed price, mix, demand, reliability, or balance value occurred |
+| Predictive | Not performed | The snapshot can establish a baseline for later forecast design | Future electricity prices, demand, reliability, or emissions |
+| Prescriptive | Not performed | A procedural diligence shortlist can order follow-up work | A best market, investment return, or optimal site |
+
+The procedural shortlist is not a prescriptive optimization. Predictive work would require continuous time series, a defined target and horizon, separate training and validation data, and error evaluation. Prescriptive work would require an objective function, weights, site constraints, capital costs, actual contracts, and available grid capacity.
+
+The main data limitations are the non-random market scope, missing values, mixed reference years, flagged fallbacks, national averages, and source-definition differences. Correlations use complete cases and have no confidence intervals or significance tests. The Expanded 50 balance gap is not an observed trade flow.
+
+## Supabase setup
+
+1. Create a Supabase project.
+2. Apply [the database migration](supabase/migrations/202609170001_atlas_v2.sql).
+3. Copy `.env.example` to `.env.local` and set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`.
+4. Keep `SUPABASE_SERVICE_ROLE_KEY` outside Vite and the repository. Use it only for the server-side seed command.
+5. Seed the two protected datasets:
+
+```bash
+SUPABASE_URL=https://your-project.supabase.co \
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key \
+npm run data:seed
+```
+
+6. Configure localhost, Vercel preview, and production callback URLs in Supabase. If Google sign-in is enabled, add the corresponding authorized redirect URLs to the Google OAuth client.
+
+The migration revokes anonymous access to the data tables and authenticated view. User-owned profile and saved-view policies require `auth.uid() = user_id` for each operation.
 
 ## Local development
 
-Requires Node.js 22 or newer.
+Node.js 22 or newer is required.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Production and verification commands:
+Verification commands:
 
 ```bash
 npm run lint
@@ -75,31 +110,34 @@ npm run build
 npm run test:e2e
 ```
 
-Playwright runs the critical workflow on desktop Chrome and a phone-sized Chromium viewport. Unit and component tests cover parsing, schema validation, derived formulas, sorting, missing values, selection limits, audience switching, source links, CSV download, demo session behavior, `localStorage` restoration, and automated accessibility checks.
+Without Supabase environment values, guest analysis remains available. Account creation, sign-in, cloud preferences, and saved views are disabled until Supabase is configured.
 
-## Technical design
-
-- React 19, TypeScript, and Vite
-- Recharts for responsive visualizations
-- Papa Parse and Zod for local CSV parsing and validation
-- Vitest, Testing Library, and axe for unit, component, and accessibility checks
-- Playwright for desktop and phone browser tests
-- GitHub Actions for install, lint, type-check, test, accessibility, build, and browser verification
-
-The production bundle uses system fonts and contains no analytics, external font requests, authentication provider, database, or backend.
-
-## Repository structure
+## Repository map
 
 ```text
-data/              unchanged source CSV and provenance
-doc/               assignment brief
-src/               application, parsing, validation, and tests
-e2e/               Playwright browser tests
-artifacts/         methodology, presentation, and reflection deliverables
-scripts/           reproducible artifact builders
-.github/workflows/ continuous integration
+data/                 immutable Assignment 15 file and versioned Expanded 50 snapshot
+supabase/migrations/  schema, grants, authenticated view, and RLS policies
+scripts/              data update, protected seed, document, and deck builders
+src/                  routing, auth, state, map, analysis, localization, and tests
+e2e/                  auth, filters, insights, navigation, downloads, locale, theme, and network checks
+artifacts/            methodology DOCX/PDF, presentation, and reflection
 ```
 
-## Privacy
+## Deliverables
 
-The optional session is clearly labeled as a demo. It asks for no name, email address, password, or other personal information. The browser stores only a fixed role and the selected dashboard preferences.
+| Course requirement | Public item |
+| --- | --- |
+| Published site | [Global Energy Decision Atlas](https://global-energy-decision-atlas.vercel.app) |
+| Collected dataset | Assignment 15 CSV, Expanded 50 CSV, and source manifest |
+| One-page data and methodology note | PDF and editable DOCX |
+| Five-minute site demonstration | Seven-slide PPTX and PDF with 300 seconds of speaker notes |
+| Short reflection | Three-page PDF and Markdown source |
+
+- [Assignment 15 CSV](data/energy-data.csv)
+- [Expanded 50 CSV](data/expanded-energy-50-v1.csv) and [source manifest](data/expanded-energy-50-v1.sources.json)
+- [Methodology PDF](artifacts/global-energy-atlas-methodology.pdf)
+- [Editable methodology DOCX](artifacts/global-energy-atlas-methodology.docx)
+- [Site demonstration PPTX](artifacts/global-energy-atlas-site-demo.pptx) and [PDF](artifacts/global-energy-atlas-site-demo.pdf)
+- [Three-page Reflection PDF](artifacts/global-energy-atlas-reflection.pdf) and [Markdown source](artifacts/reflection.md)
+
+The production site is available at [global-energy-decision-atlas.vercel.app](https://global-energy-decision-atlas.vercel.app). Email authentication and account-owned saved views use Supabase; Google OAuth remains optional and requires its own provider configuration. External secrets are not stored in this repository.

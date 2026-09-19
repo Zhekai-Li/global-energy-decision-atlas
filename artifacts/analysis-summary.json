@@ -1,0 +1,2100 @@
+{
+  "generatedFrom": {
+    "assignment": "data/energy-data.csv",
+    "expanded": "data/expanded-energy-50-v1.csv",
+    "storyPresets": "data/story-presets.json",
+    "expandedSnapshotDate": "2026-09-17"
+  },
+  "measureDefinitions": {
+    "price": {
+      "meaning": "Residential or business retail electricity price",
+      "unit": "USD/kWh"
+    },
+    "nonFossil": {
+      "meaning": "Solar + wind + hydro + other share of domestic electricity generation",
+      "unit": "%"
+    },
+    "consumption": {
+      "meaning": "Total primary energy consumption, not per-capita use",
+      "unit": "EJ"
+    },
+    "assignmentTrade": {
+      "meaning": "Reported total energy net imports",
+      "unit": "EJ"
+    },
+    "expandedBalance": {
+      "meaning": "Primary energy consumption minus total energy production",
+      "unit": "EJ"
+    }
+  },
+  "evidenceBoundaries": {
+    "descriptive": {
+      "status": "performed",
+      "supports": [
+        "Coverage and missingness counts",
+        "Extrema, rankings, medians, and concentration",
+        "Pearson correlations calculated from complete cases",
+        "Fixed-market comparisons defined in the story presets"
+      ],
+      "doesNotProve": [
+        "Causation",
+        "Future outcomes",
+        "An optimal market or site"
+      ],
+      "missingInputs": [],
+      "nextWork": [
+        "Refresh the snapshot on a defined schedule",
+        "Add uncertainty estimates where the data design permits"
+      ]
+    },
+    "diagnostic": {
+      "status": "partial",
+      "supports": [
+        "Association patterns that can motivate hypotheses",
+        "External market context that can shape local diligence questions"
+      ],
+      "doesNotProve": [
+        "Why an observed price, generation mix, demand, reliability, or balance value occurred",
+        "That a linked external explanation caused an Atlas pattern"
+      ],
+      "missingInputs": [
+        "Matched historical series",
+        "Tariff components and customer-class rules",
+        "Grid reliability and connection records",
+        "A causal identification design"
+      ],
+      "nextWork": [
+        "Test specific explanations with matched local evidence and a stated causal design"
+      ]
+    },
+    "predictive": {
+      "status": "notPerformed",
+      "supports": [
+        "A cross-sectional baseline for defining later forecast work"
+      ],
+      "doesNotProve": [
+        "Future electricity prices",
+        "Future energy demand",
+        "Future grid reliability",
+        "Future emissions"
+      ],
+      "missingInputs": [
+        "Continuous time series",
+        "A defined prediction target and forecast horizon",
+        "Separate training and validation data",
+        "Out-of-sample error evaluation"
+      ],
+      "nextWork": [
+        "Specify the target and horizon before selecting and validating a forecasting model"
+      ]
+    },
+    "prescriptive": {
+      "status": "notPerformed",
+      "supports": [
+        "A procedural diligence shortlist that orders follow-up investigation"
+      ],
+      "doesNotProve": [
+        "A best market",
+        "Investment return",
+        "An optimal facility location"
+      ],
+      "missingInputs": [
+        "An objective function and decision weights",
+        "Site-level constraints",
+        "Capital and operating costs",
+        "Actual supply contracts",
+        "Available grid capacity"
+      ],
+      "nextWork": [
+        "Define the decision objective and constraints, then test options with verified site-level inputs"
+      ]
+    }
+  },
+  "dataLimitations": [
+    "The Expanded 50 markets are a non-random scope selected for breadth and data availability, not a representative global sample.",
+    "Missing values remain missing and reduce the denominator for each metric.",
+    "Indicators combine different reference years, and flagged fallbacks may use a value up to two years earlier.",
+    "National averages do not represent a facility tariff, contract, connection point, or reliability history.",
+    "Source definitions and accounting boundaries can differ across providers.",
+    "Pearson correlations use complete cases only, and the analysis does not calculate confidence intervals or statistical significance.",
+    "The Expanded 50 balance gap is consumption minus production and is not an observed trade flow."
+  ],
+  "assignment15": {
+    "records": 15,
+    "periods": {
+      "price": "December 2025",
+      "consumption": "2024",
+      "electricityMix": "2024",
+      "netImports": "2023"
+    },
+    "descriptive": {
+      "householdPriceUsdPerKwh": {
+        "n": 14,
+        "total": 15,
+        "coveragePct": 93.3,
+        "minimum": 0.053,
+        "q1": 0.08,
+        "median": 0.127,
+        "q3": 0.22,
+        "maximum": 0.429,
+        "mean": 0.174
+      },
+      "businessPriceUsdPerKwh": {
+        "n": 14,
+        "total": 15,
+        "coveragePct": 93.3,
+        "minimum": 0.063,
+        "q1": 0.116,
+        "median": 0.135,
+        "q3": 0.181,
+        "maximum": 0.451,
+        "mean": 0.167
+      },
+      "totalEnergyConsumptionEj": {
+        "n": 15,
+        "total": 15,
+        "coveragePct": 100.0,
+        "minimum": 6.8,
+        "q1": 10.9,
+        "median": 13.1,
+        "q3": 26.4,
+        "maximum": 180.0,
+        "mean": 32.2
+      },
+      "nonFossilElectricityPct": {
+        "n": 15,
+        "total": 15,
+        "coveragePct": 100.0,
+        "minimum": 2.2,
+        "q1": 23.5,
+        "median": 38.2,
+        "q3": 61.8,
+        "maximum": 94.9,
+        "mean": 43.2
+      },
+      "reportedNetImportsEj": {
+        "n": 15,
+        "total": 15,
+        "coveragePct": 100.0,
+        "minimum": -24.6,
+        "q1": -9.2,
+        "median": 1.3,
+        "q3": 8.5,
+        "maximum": 40.3,
+        "mean": 1.4
+      }
+    },
+    "relationships": {
+      "householdPriceVsNonFossil": {
+        "r": 0.54,
+        "n": 14
+      }
+    },
+    "extrema": {
+      "householdPriceUsdPerKwh": {
+        "coverage": {
+          "complete": 14,
+          "total": 15,
+          "coveragePct": 93.3
+        },
+        "lowest": [
+          {
+            "iso3": "",
+            "country": "Saudi Arabia",
+            "value": 0.053
+          },
+          {
+            "iso3": "",
+            "country": "India",
+            "value": 0.071
+          },
+          {
+            "iso3": "",
+            "country": "Russia",
+            "value": 0.078
+          },
+          {
+            "iso3": "",
+            "country": "China",
+            "value": 0.079
+          },
+          {
+            "iso3": "",
+            "country": "Indonesia",
+            "value": 0.082
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "",
+            "country": "United Kingdom",
+            "value": 0.429
+          },
+          {
+            "iso3": "",
+            "country": "Germany",
+            "value": 0.399
+          },
+          {
+            "iso3": "",
+            "country": "France",
+            "value": 0.267
+          },
+          {
+            "iso3": "",
+            "country": "Japan",
+            "value": 0.225
+          },
+          {
+            "iso3": "",
+            "country": "United States",
+            "value": 0.203
+          }
+        ]
+      },
+      "businessPriceUsdPerKwh": {
+        "coverage": {
+          "complete": 14,
+          "total": 15,
+          "coveragePct": 93.3
+        },
+        "lowest": [
+          {
+            "iso3": "",
+            "country": "Indonesia",
+            "value": 0.063
+          },
+          {
+            "iso3": "",
+            "country": "Saudi Arabia",
+            "value": 0.074
+          },
+          {
+            "iso3": "",
+            "country": "India",
+            "value": 0.109
+          },
+          {
+            "iso3": "",
+            "country": "Canada",
+            "value": 0.115
+          },
+          {
+            "iso3": "",
+            "country": "China",
+            "value": 0.117
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "",
+            "country": "United Kingdom",
+            "value": 0.451
+          },
+          {
+            "iso3": "",
+            "country": "Germany",
+            "value": 0.266
+          },
+          {
+            "iso3": "",
+            "country": "Mexico",
+            "value": 0.242
+          },
+          {
+            "iso3": "",
+            "country": "Japan",
+            "value": 0.185
+          },
+          {
+            "iso3": "",
+            "country": "France",
+            "value": 0.17
+          }
+        ]
+      },
+      "totalEnergyConsumptionEj": {
+        "coverage": {
+          "complete": 15,
+          "total": 15,
+          "coveragePct": 100.0
+        },
+        "lowest": [
+          {
+            "iso3": "",
+            "country": "United Kingdom",
+            "value": 6.8
+          },
+          {
+            "iso3": "",
+            "country": "Mexico",
+            "value": 8.2
+          },
+          {
+            "iso3": "",
+            "country": "France",
+            "value": 9.0
+          },
+          {
+            "iso3": "",
+            "country": "Germany",
+            "value": 10.5
+          },
+          {
+            "iso3": "",
+            "country": "Brazil",
+            "value": 11.3
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "",
+            "country": "China",
+            "value": 180.0
+          },
+          {
+            "iso3": "",
+            "country": "United States",
+            "value": 99.8
+          },
+          {
+            "iso3": "",
+            "country": "India",
+            "value": 39.5
+          },
+          {
+            "iso3": "",
+            "country": "Russia",
+            "value": 36.2
+          },
+          {
+            "iso3": "",
+            "country": "Japan",
+            "value": 16.5
+          }
+        ]
+      },
+      "nonFossilElectricityPct": {
+        "coverage": {
+          "complete": 15,
+          "total": 15,
+          "coveragePct": 100.0
+        },
+        "lowest": [
+          {
+            "iso3": "",
+            "country": "Saudi Arabia",
+            "value": 2.2
+          },
+          {
+            "iso3": "",
+            "country": "Iran",
+            "value": 7.2
+          },
+          {
+            "iso3": "",
+            "country": "Indonesia",
+            "value": 18.1
+          },
+          {
+            "iso3": "",
+            "country": "India",
+            "value": 22.5
+          },
+          {
+            "iso3": "",
+            "country": "Mexico",
+            "value": 24.6
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "",
+            "country": "France",
+            "value": 94.9
+          },
+          {
+            "iso3": "",
+            "country": "Brazil",
+            "value": 89.4
+          },
+          {
+            "iso3": "",
+            "country": "Canada",
+            "value": 77.7
+          },
+          {
+            "iso3": "",
+            "country": "United Kingdom",
+            "value": 64.9
+          },
+          {
+            "iso3": "",
+            "country": "Germany",
+            "value": 58.6
+          }
+        ]
+      },
+      "reportedNetImportsEj": {
+        "coverage": {
+          "complete": 15,
+          "total": 15,
+          "coveragePct": 100.0
+        },
+        "lowest": [
+          {
+            "iso3": "",
+            "country": "Russia",
+            "value": -24.6
+          },
+          {
+            "iso3": "",
+            "country": "Saudi Arabia",
+            "value": -15.9
+          },
+          {
+            "iso3": "",
+            "country": "Canada",
+            "value": -11.0
+          },
+          {
+            "iso3": "",
+            "country": "Indonesia",
+            "value": -10.3
+          },
+          {
+            "iso3": "",
+            "country": "United States",
+            "value": -8.1
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "",
+            "country": "China",
+            "value": 40.3
+          },
+          {
+            "iso3": "",
+            "country": "India",
+            "value": 16.9
+          },
+          {
+            "iso3": "",
+            "country": "Japan",
+            "value": 13.8
+          },
+          {
+            "iso3": "",
+            "country": "South Korea",
+            "value": 9.8
+          },
+          {
+            "iso3": "",
+            "country": "Germany",
+            "value": 7.2
+          }
+        ]
+      }
+    },
+    "priceComparison": {
+      "coverage": {
+        "complete": 14,
+        "total": 15,
+        "coveragePct": 93.3
+      },
+      "largestAbsoluteDifferences": [
+        {
+          "iso3": "",
+          "country": "Germany",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.133,
+          "businessToHouseholdRatio": 0.667
+        },
+        {
+          "iso3": "",
+          "country": "Mexico",
+          "direction": "businessHigher",
+          "absoluteDifferenceUsdPerKwh": 0.118,
+          "businessToHouseholdRatio": 1.952
+        },
+        {
+          "iso3": "",
+          "country": "France",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.097,
+          "businessToHouseholdRatio": 0.637
+        },
+        {
+          "iso3": "",
+          "country": "United States",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.058,
+          "businessToHouseholdRatio": 0.714
+        },
+        {
+          "iso3": "",
+          "country": "Russia",
+          "direction": "businessHigher",
+          "absoluteDifferenceUsdPerKwh": 0.046,
+          "businessToHouseholdRatio": 1.59
+        }
+      ],
+      "householdHigher": [
+        "United States",
+        "Japan",
+        "Canada",
+        "South Korea",
+        "Indonesia",
+        "Brazil",
+        "Germany",
+        "France"
+      ],
+      "businessHigher": [
+        "China",
+        "India",
+        "Russia",
+        "Saudi Arabia",
+        "Mexico",
+        "United Kingdom"
+      ],
+      "equal": []
+    },
+    "generationSourceLeaders": {
+      "solar": {
+        "iso3": "",
+        "country": "Germany",
+        "value": 14.9
+      },
+      "wind": {
+        "iso3": "",
+        "country": "United Kingdom",
+        "value": 29.3
+      },
+      "hydro": {
+        "iso3": "",
+        "country": "Brazil",
+        "value": 55.4
+      },
+      "other": {
+        "iso3": "",
+        "country": "France",
+        "value": 69.7
+      },
+      "gas": {
+        "iso3": "",
+        "country": "Iran",
+        "value": 85.9
+      },
+      "coal": {
+        "iso3": "",
+        "country": "India",
+        "value": 74.5
+      },
+      "oilAndOtherFossil": {
+        "iso3": "",
+        "country": "Saudi Arabia",
+        "value": 34.5
+      }
+    }
+  },
+  "expanded50": {
+    "records": 50,
+    "periods": {
+      "price": "2023-2026 average",
+      "consumption": "2023",
+      "production": "2023",
+      "electricityMix": "2023"
+    },
+    "descriptive": {
+      "householdPriceUsdPerKwh": {
+        "n": 47,
+        "total": 50,
+        "coveragePct": 94.0,
+        "minimum": 0.006,
+        "q1": 0.076,
+        "median": 0.165,
+        "q3": 0.231,
+        "maximum": 0.414,
+        "mean": 0.169
+      },
+      "businessPriceUsdPerKwh": {
+        "n": 45,
+        "total": 50,
+        "coveragePct": 90.0,
+        "minimum": 0.018,
+        "q1": 0.103,
+        "median": 0.133,
+        "q3": 0.201,
+        "maximum": 0.411,
+        "mean": 0.152
+      },
+      "primaryEnergyConsumptionEj": {
+        "n": 47,
+        "total": 50,
+        "coveragePct": 94.0,
+        "minimum": 0.231,
+        "q1": 1.954,
+        "median": 3.944,
+        "q3": 8.461,
+        "maximum": 169.459,
+        "mean": 11.595
+      },
+      "nonFossilElectricityPct": {
+        "n": 47,
+        "total": 50,
+        "coveragePct": 94.0,
+        "minimum": 0.9,
+        "q1": 22.2,
+        "median": 42.9,
+        "q3": 76.4,
+        "maximum": 100.0,
+        "mean": 50.3
+      },
+      "energyBalanceGapEj": {
+        "n": 47,
+        "total": 50,
+        "coveragePct": 94.0,
+        "minimum": -31.0,
+        "q1": -0.5,
+        "median": 0.7,
+        "q3": 2.5,
+        "maximum": 35.5,
+        "mean": 0.6
+      }
+    },
+    "relationships": {
+      "householdPriceVsNonFossil": {
+        "r": 0.425,
+        "n": 45
+      },
+      "businessPriceVsNonFossil": {
+        "r": 0.194,
+        "n": 43
+      },
+      "householdPriceVsConsumption": {
+        "r": -0.138,
+        "n": 45
+      }
+    },
+    "extrema": {
+      "householdPriceUsdPerKwh": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.006
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 0.023
+          },
+          {
+            "iso3": "NGA",
+            "country": "Nigeria",
+            "value": 0.036
+          },
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.041
+          },
+          {
+            "iso3": "MYS",
+            "country": "Malaysia",
+            "value": 0.05
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "ITA",
+            "country": "Italy",
+            "value": 0.414
+          },
+          {
+            "iso3": "DEU",
+            "country": "Germany",
+            "value": 0.406
+          },
+          {
+            "iso3": "BEL",
+            "country": "Belgium",
+            "value": 0.406
+          },
+          {
+            "iso3": "CHE",
+            "country": "Switzerland",
+            "value": 0.367
+          },
+          {
+            "iso3": "DNK",
+            "country": "Denmark",
+            "value": 0.355
+          }
+        ]
+      },
+      "businessPriceUsdPerKwh": {
+        "coverage": {
+          "complete": 45,
+          "total": 50,
+          "coveragePct": 90.0
+        },
+        "lowest": [
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.018
+          },
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.035
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 0.038
+          },
+          {
+            "iso3": "NGA",
+            "country": "Nigeria",
+            "value": 0.05
+          },
+          {
+            "iso3": "IDN",
+            "country": "Indonesia",
+            "value": 0.07
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "ITA",
+            "country": "Italy",
+            "value": 0.411
+          },
+          {
+            "iso3": "POL",
+            "country": "Poland",
+            "value": 0.334
+          },
+          {
+            "iso3": "CHE",
+            "country": "Switzerland",
+            "value": 0.285
+          },
+          {
+            "iso3": "DEU",
+            "country": "Germany",
+            "value": 0.283
+          },
+          {
+            "iso3": "BEL",
+            "country": "Belgium",
+            "value": 0.263
+          }
+        ]
+      },
+      "primaryEnergyConsumptionEj": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.2
+          },
+          {
+            "iso3": "KEN",
+            "country": "Kenya",
+            "value": 0.3
+          },
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.3
+          },
+          {
+            "iso3": "DNK",
+            "country": "Denmark",
+            "value": 0.7
+          },
+          {
+            "iso3": "NZL",
+            "country": "New Zealand",
+            "value": 0.9
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "CHN",
+            "country": "China",
+            "value": 169.5
+          },
+          {
+            "iso3": "USA",
+            "country": "United States",
+            "value": 94.4
+          },
+          {
+            "iso3": "IND",
+            "country": "India",
+            "value": 39.0
+          },
+          {
+            "iso3": "RUS",
+            "country": "Russia",
+            "value": 31.5
+          },
+          {
+            "iso3": "JPN",
+            "country": "Japan",
+            "value": 17.5
+          }
+        ]
+      },
+      "totalEnergyProductionEj": {
+        "coverage": {
+          "complete": 50,
+          "total": 50,
+          "coveragePct": 100.0
+        },
+        "lowest": [
+          {
+            "iso3": "MAR",
+            "country": "Morocco",
+            "value": 0.0
+          },
+          {
+            "iso3": "KEN",
+            "country": "Kenya",
+            "value": 0.0
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.1
+          },
+          {
+            "iso3": "SGP",
+            "country": "Singapore",
+            "value": 0.1
+          },
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.1
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "CHN",
+            "country": "China",
+            "value": 134.0
+          },
+          {
+            "iso3": "USA",
+            "country": "United States",
+            "value": 108.3
+          },
+          {
+            "iso3": "RUS",
+            "country": "Russia",
+            "value": 62.6
+          },
+          {
+            "iso3": "SAU",
+            "country": "Saudi Arabia",
+            "value": 29.5
+          },
+          {
+            "iso3": "CAN",
+            "country": "Canada",
+            "value": 23.2
+          }
+        ]
+      },
+      "nonFossilElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.9
+          },
+          {
+            "iso3": "BGD",
+            "country": "Bangladesh",
+            "value": 1.7
+          },
+          {
+            "iso3": "IRN",
+            "country": "Iran",
+            "value": 8.2
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 11.7
+          },
+          {
+            "iso3": "KAZ",
+            "country": "Kazakhstan",
+            "value": 12.7
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 100.0
+          },
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 100.0
+          },
+          {
+            "iso3": "SWE",
+            "country": "Sweden",
+            "value": 98.6
+          },
+          {
+            "iso3": "NOR",
+            "country": "Norway",
+            "value": 98.5
+          },
+          {
+            "iso3": "CHE",
+            "country": "Switzerland",
+            "value": 98.0
+          }
+        ]
+      },
+      "energyBalanceGapEj": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "RUS",
+            "country": "Russia",
+            "value": -31.0
+          },
+          {
+            "iso3": "USA",
+            "country": "United States",
+            "value": -14.0
+          },
+          {
+            "iso3": "AUS",
+            "country": "Australia",
+            "value": -12.2
+          },
+          {
+            "iso3": "IDN",
+            "country": "Indonesia",
+            "value": -10.7
+          },
+          {
+            "iso3": "CAN",
+            "country": "Canada",
+            "value": -9.2
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "CHN",
+            "country": "China",
+            "value": 35.5
+          },
+          {
+            "iso3": "IND",
+            "country": "India",
+            "value": 16.2
+          },
+          {
+            "iso3": "JPN",
+            "country": "Japan",
+            "value": 15.3
+          },
+          {
+            "iso3": "KOR",
+            "country": "South Korea",
+            "value": 10.8
+          },
+          {
+            "iso3": "DEU",
+            "country": "Germany",
+            "value": 8.2
+          }
+        ]
+      },
+      "solarElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.0
+          },
+          {
+            "iso3": "IRN",
+            "country": "Iran",
+            "value": 0.2
+          },
+          {
+            "iso3": "IDN",
+            "country": "Indonesia",
+            "value": 0.2
+          },
+          {
+            "iso3": "RUS",
+            "country": "Russia",
+            "value": 0.2
+          },
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.2
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "CHL",
+            "country": "Chile",
+            "value": 20.1
+          },
+          {
+            "iso3": "ESP",
+            "country": "Spain",
+            "value": 17.4
+          },
+          {
+            "iso3": "AUS",
+            "country": "Australia",
+            "value": 16.5
+          },
+          {
+            "iso3": "NLD",
+            "country": "Netherlands",
+            "value": 16.3
+          },
+          {
+            "iso3": "DEU",
+            "country": "Germany",
+            "value": 12.6
+          }
+        ]
+      },
+      "windElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "BGD",
+            "country": "Bangladesh",
+            "value": 0.0
+          },
+          {
+            "iso3": "MYS",
+            "country": "Malaysia",
+            "value": 0.0
+          },
+          {
+            "iso3": "NGA",
+            "country": "Nigeria",
+            "value": 0.0
+          },
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.0
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.1
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "DNK",
+            "country": "Denmark",
+            "value": 57.2
+          },
+          {
+            "iso3": "GBR",
+            "country": "United Kingdom",
+            "value": 28.1
+          },
+          {
+            "iso3": "DEU",
+            "country": "Germany",
+            "value": 27.7
+          },
+          {
+            "iso3": "NLD",
+            "country": "Netherlands",
+            "value": 24.6
+          },
+          {
+            "iso3": "ESP",
+            "country": "Spain",
+            "value": 23.0
+          }
+        ]
+      },
+      "hydroElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.0
+          },
+          {
+            "iso3": "NLD",
+            "country": "Netherlands",
+            "value": 0.1
+          },
+          {
+            "iso3": "DNK",
+            "country": "Denmark",
+            "value": 0.1
+          },
+          {
+            "iso3": "BEL",
+            "country": "Belgium",
+            "value": 0.5
+          },
+          {
+            "iso3": "KOR",
+            "country": "South Korea",
+            "value": 0.6
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 96.4
+          },
+          {
+            "iso3": "NOR",
+            "country": "Norway",
+            "value": 89.0
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 71.2
+          },
+          {
+            "iso3": "COL",
+            "country": "Colombia",
+            "value": 62.6
+          },
+          {
+            "iso3": "NZL",
+            "country": "New Zealand",
+            "value": 61.0
+          }
+        ]
+      },
+      "otherElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.0
+          },
+          {
+            "iso3": "BGD",
+            "country": "Bangladesh",
+            "value": 0.0
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 0.0
+          },
+          {
+            "iso3": "KAZ",
+            "country": "Kazakhstan",
+            "value": 0.0
+          },
+          {
+            "iso3": "MAR",
+            "country": "Morocco",
+            "value": 0.1
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "FRA",
+            "country": "France",
+            "value": 67.2
+          },
+          {
+            "iso3": "UKR",
+            "country": "Ukraine",
+            "value": 56.5
+          },
+          {
+            "iso3": "FIN",
+            "country": "Finland",
+            "value": 56.0
+          },
+          {
+            "iso3": "KEN",
+            "country": "Kenya",
+            "value": 48.7
+          },
+          {
+            "iso3": "BEL",
+            "country": "Belgium",
+            "value": 44.7
+          }
+        ]
+      },
+      "gasElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.0
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.0
+          },
+          {
+            "iso3": "KEN",
+            "country": "Kenya",
+            "value": 0.0
+          },
+          {
+            "iso3": "ZAF",
+            "country": "South Africa",
+            "value": 0.0
+          },
+          {
+            "iso3": "SWE",
+            "country": "Sweden",
+            "value": 0.1
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 98.7
+          },
+          {
+            "iso3": "IRN",
+            "country": "Iran",
+            "value": 84.3
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 80.8
+          },
+          {
+            "iso3": "NGA",
+            "country": "Nigeria",
+            "value": 77.3
+          },
+          {
+            "iso3": "THA",
+            "country": "Thailand",
+            "value": 67.9
+          }
+        ]
+      },
+      "coalElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "value": 0.0
+          },
+          {
+            "iso3": "BEL",
+            "country": "Belgium",
+            "value": 0.0
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 0.0
+          },
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.0
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.0
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "ZAF",
+            "country": "South Africa",
+            "value": 82.5
+          },
+          {
+            "iso3": "IND",
+            "country": "India",
+            "value": 75.4
+          },
+          {
+            "iso3": "MAR",
+            "country": "Morocco",
+            "value": 63.9
+          },
+          {
+            "iso3": "PHL",
+            "country": "Philippines",
+            "value": 63.2
+          },
+          {
+            "iso3": "IDN",
+            "country": "Indonesia",
+            "value": 61.8
+          }
+        ]
+      },
+      "oilAndOtherFossilElectricityPct": {
+        "coverage": {
+          "complete": 47,
+          "total": 50,
+          "coveragePct": 94.0
+        },
+        "lowest": [
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "value": 0.0
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "value": 0.0
+          },
+          {
+            "iso3": "NGA",
+            "country": "Nigeria",
+            "value": 0.0
+          },
+          {
+            "iso3": "IND",
+            "country": "India",
+            "value": 0.2
+          },
+          {
+            "iso3": "TUR",
+            "country": "Turkey",
+            "value": 0.3
+          }
+        ],
+        "highest": [
+          {
+            "iso3": "BGD",
+            "country": "Bangladesh",
+            "value": 21.7
+          },
+          {
+            "iso3": "PAK",
+            "country": "Pakistan",
+            "value": 11.9
+          },
+          {
+            "iso3": "KEN",
+            "country": "Kenya",
+            "value": 10.2
+          },
+          {
+            "iso3": "MEX",
+            "country": "Mexico",
+            "value": 10.0
+          },
+          {
+            "iso3": "EGY",
+            "country": "Egypt",
+            "value": 7.5
+          }
+        ]
+      }
+    },
+    "priceComparison": {
+      "coverage": {
+        "complete": 45,
+        "total": 50,
+        "coveragePct": 90.0
+      },
+      "largestAbsoluteDifferences": [
+        {
+          "iso3": "BEL",
+          "country": "Belgium",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.143,
+          "businessToHouseholdRatio": 0.648
+        },
+        {
+          "iso3": "DNK",
+          "country": "Denmark",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.125,
+          "businessToHouseholdRatio": 0.648
+        },
+        {
+          "iso3": "DEU",
+          "country": "Germany",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.123,
+          "businessToHouseholdRatio": 0.697
+        },
+        {
+          "iso3": "ESP",
+          "country": "Spain",
+          "direction": "householdHigher",
+          "absoluteDifferenceUsdPerKwh": 0.121,
+          "businessToHouseholdRatio": 0.525
+        },
+        {
+          "iso3": "MEX",
+          "country": "Mexico",
+          "direction": "businessHigher",
+          "absoluteDifferenceUsdPerKwh": 0.104,
+          "businessToHouseholdRatio": 1.954
+        }
+      ],
+      "householdHigher": [
+        "Australia",
+        "Belgium",
+        "Brazil",
+        "Canada",
+        "Chile",
+        "Colombia",
+        "Germany",
+        "Denmark",
+        "Algeria",
+        "Spain",
+        "Finland",
+        "France",
+        "Indonesia",
+        "Iceland",
+        "Italy",
+        "Japan",
+        "Kenya",
+        "South Korea",
+        "Morocco",
+        "Netherlands",
+        "Norway",
+        "Peru",
+        "Philippines",
+        "Switzerland",
+        "United States",
+        "South Africa"
+      ],
+      "businessHigher": [
+        "Argentina",
+        "Bangladesh",
+        "China",
+        "Egypt",
+        "Ethiopia",
+        "India",
+        "Kazakhstan",
+        "Mexico",
+        "Malaysia",
+        "Nigeria",
+        "Pakistan",
+        "Poland",
+        "Russia",
+        "Saudi Arabia",
+        "Singapore",
+        "Thailand",
+        "Turkey",
+        "Ukraine"
+      ],
+      "equal": [
+        "Vietnam"
+      ]
+    },
+    "generationSourceLeaders": {
+      "solar": {
+        "iso3": "CHL",
+        "country": "Chile",
+        "value": 20.1
+      },
+      "wind": {
+        "iso3": "DNK",
+        "country": "Denmark",
+        "value": 57.2
+      },
+      "hydro": {
+        "iso3": "ETH",
+        "country": "Ethiopia",
+        "value": 96.4
+      },
+      "other": {
+        "iso3": "FRA",
+        "country": "France",
+        "value": 67.2
+      },
+      "gas": {
+        "iso3": "DZA",
+        "country": "Algeria",
+        "value": 98.7
+      },
+      "coal": {
+        "iso3": "ZAF",
+        "country": "South Africa",
+        "value": 82.5
+      },
+      "oilAndOtherFossil": {
+        "iso3": "BGD",
+        "country": "Bangladesh",
+        "value": 21.7
+      }
+    },
+    "concentration": {
+      "reportedConsumptionTotalEj": 545.0,
+      "topFiveSharePct": 64.6,
+      "topFiveMarkets": [
+        {
+          "iso3": "CHN",
+          "country": "China",
+          "consumptionEj": 169.5,
+          "sharePct": 31.1
+        },
+        {
+          "iso3": "USA",
+          "country": "United States",
+          "consumptionEj": 94.4,
+          "sharePct": 17.3
+        },
+        {
+          "iso3": "IND",
+          "country": "India",
+          "consumptionEj": 39.0,
+          "sharePct": 7.2
+        },
+        {
+          "iso3": "RUS",
+          "country": "Russia",
+          "consumptionEj": 31.5,
+          "sharePct": 5.8
+        },
+        {
+          "iso3": "JPN",
+          "country": "Japan",
+          "consumptionEj": 17.5,
+          "sharePct": 3.2
+        }
+      ],
+      "combinations": {
+        "china": 31.1,
+        "unitedStates": 17.3,
+        "chinaAndUnitedStates": 48.4,
+        "topFive": 64.6
+      }
+    },
+    "balanceDirection": {
+      "positive": 34,
+      "negative": 13,
+      "netAcrossReportedMarketsEj": 28.2,
+      "largestPositive": {
+        "iso3": "CHN",
+        "country": "China",
+        "value": 35.5
+      },
+      "largestNegative": {
+        "iso3": "RUS",
+        "country": "Russia",
+        "value": -31.0
+      }
+    },
+    "householdPriceExtrema": {
+      "coverage": {
+        "complete": 47,
+        "total": 50,
+        "coveragePct": 94.0
+      },
+      "lowest": [
+        {
+          "iso3": "ETH",
+          "country": "Ethiopia",
+          "value": 0.006
+        },
+        {
+          "iso3": "EGY",
+          "country": "Egypt",
+          "value": 0.023
+        },
+        {
+          "iso3": "NGA",
+          "country": "Nigeria",
+          "value": 0.036
+        },
+        {
+          "iso3": "DZA",
+          "country": "Algeria",
+          "value": 0.041
+        },
+        {
+          "iso3": "MYS",
+          "country": "Malaysia",
+          "value": 0.05
+        }
+      ],
+      "highest": [
+        {
+          "iso3": "ITA",
+          "country": "Italy",
+          "value": 0.414
+        },
+        {
+          "iso3": "DEU",
+          "country": "Germany",
+          "value": 0.406
+        },
+        {
+          "iso3": "BEL",
+          "country": "Belgium",
+          "value": 0.406
+        },
+        {
+          "iso3": "CHE",
+          "country": "Switzerland",
+          "value": 0.367
+        },
+        {
+          "iso3": "DNK",
+          "country": "Denmark",
+          "value": 0.355
+        }
+      ]
+    },
+    "valueTransitionThresholds": {
+      "householdPriceAtOrBelowUsdPerKwh": 0.165,
+      "nonFossilAtOrAbovePct": 42.9
+    },
+    "valueTransitionMarkets": [
+      {
+        "country": "Ethiopia",
+        "householdPriceUsdPerKwh": 0.006,
+        "nonFossilPct": 100.0,
+        "energyBalanceGapEj": 0.2
+      },
+      {
+        "country": "Pakistan",
+        "householdPriceUsdPerKwh": 0.063,
+        "nonFossilPct": 46.2,
+        "energyBalanceGapEj": 1.5
+      },
+      {
+        "country": "Vietnam",
+        "householdPriceUsdPerKwh": 0.078,
+        "nonFossilPct": 42.9,
+        "energyBalanceGapEj": 2.4
+      },
+      {
+        "country": "Ukraine",
+        "householdPriceUsdPerKwh": 0.084,
+        "nonFossilPct": 72.2,
+        "energyBalanceGapEj": 0.5
+      },
+      {
+        "country": "Canada",
+        "householdPriceUsdPerKwh": 0.123,
+        "nonFossilPct": 79.2,
+        "energyBalanceGapEj": -9.2
+      },
+      {
+        "country": "Brazil",
+        "householdPriceUsdPerKwh": 0.164,
+        "nonFossilPct": 91.0,
+        "energyBalanceGapEj": 1.4
+      },
+      {
+        "country": "Norway",
+        "householdPriceUsdPerKwh": 0.165,
+        "nonFossilPct": 98.5,
+        "energyBalanceGapEj": -7.7
+      }
+    ],
+    "regionalAggregates": {
+      "North America": {
+        "members": 3,
+        "householdPriceMedianUsdPerKwh": 0.123,
+        "priceCoverage": "3/3",
+        "consumptionEj": 116.6,
+        "generationWeightedNonFossilPct": 44.4,
+        "energyBalanceGapEj": -21.5
+      },
+      "South America": {
+        "members": 5,
+        "householdPriceMedianUsdPerKwh": 0.186,
+        "priceCoverage": "5/5",
+        "consumptionEj": 22.7,
+        "generationWeightedNonFossilPct": 78.0,
+        "energyBalanceGapEj": 1.4
+      },
+      "Europe": {
+        "members": 16,
+        "householdPriceMedianUsdPerKwh": 0.255,
+        "priceCoverage": "15/16",
+        "consumptionEj": 89.7,
+        "generationWeightedNonFossilPct": 60.4,
+        "energyBalanceGapEj": -3.4
+      },
+      "Nordics": {
+        "members": 5,
+        "householdPriceMedianUsdPerKwh": 0.179,
+        "priceCoverage": "5/5",
+        "consumptionEj": 6.3,
+        "generationWeightedNonFossilPct": 96.9,
+        "energyBalanceGapEj": -5.4
+      },
+      "East Asia": {
+        "members": 3,
+        "householdPriceMedianUsdPerKwh": 0.127,
+        "priceCoverage": "3/3",
+        "consumptionEj": 199.8,
+        "generationWeightedNonFossilPct": 34.9,
+        "energyBalanceGapEj": 61.6
+      },
+      "South Asia": {
+        "members": 3,
+        "householdPriceMedianUsdPerKwh": 0.063,
+        "priceCoverage": "3/3",
+        "consumptionEj": 44.1,
+        "generationWeightedNonFossilPct": 22.8,
+        "energyBalanceGapEj": 18.6
+      },
+      "Southeast Asia": {
+        "members": 6,
+        "householdPriceMedianUsdPerKwh": 0.108,
+        "priceCoverage": "6/6",
+        "consumptionEj": 26.9,
+        "generationWeightedNonFossilPct": 24.5,
+        "energyBalanceGapEj": -3.5
+      },
+      "Middle East": {
+        "members": 4,
+        "householdPriceMedianUsdPerKwh": 0.059,
+        "priceCoverage": "2/4",
+        "consumptionEj": 20.0,
+        "generationWeightedNonFossilPct": 23.6,
+        "energyBalanceGapEj": -1.3
+      },
+      "Africa": {
+        "members": 7,
+        "householdPriceMedianUsdPerKwh": 0.041,
+        "priceCoverage": "7/7",
+        "consumptionEj": 15.2,
+        "generationWeightedNonFossilPct": 16.8,
+        "energyBalanceGapEj": -6.6
+      },
+      "Oceania": {
+        "members": 2,
+        "householdPriceMedianUsdPerKwh": 0.235,
+        "priceCoverage": "2/2",
+        "consumptionEj": 6.8,
+        "generationWeightedNonFossilPct": 42.3,
+        "energyBalanceGapEj": -11.7
+      }
+    },
+    "stories": {
+      "europePricePeak": {
+        "countries": [
+          {
+            "iso3": "ITA",
+            "country": "Italy",
+            "householdPriceUsdPerKwh": 0.414,
+            "businessPriceUsdPerKwh": 0.411,
+            "nonFossilElectricityPct": 44.5,
+            "hydroElectricityPct": 15.5,
+            "primaryEnergyConsumptionEj": 6.1,
+            "energyBalanceGapEj": 5.2
+          },
+          {
+            "iso3": "DEU",
+            "country": "Germany",
+            "householdPriceUsdPerKwh": 0.406,
+            "businessPriceUsdPerKwh": 0.283,
+            "nonFossilElectricityPct": 56.1,
+            "hydroElectricityPct": 4.2,
+            "primaryEnergyConsumptionEj": 11.4,
+            "energyBalanceGapEj": 8.2
+          },
+          {
+            "iso3": "BEL",
+            "country": "Belgium",
+            "householdPriceUsdPerKwh": 0.406,
+            "businessPriceUsdPerKwh": 0.263,
+            "nonFossilElectricityPct": 73.5,
+            "hydroElectricityPct": 0.5,
+            "primaryEnergyConsumptionEj": 2.3,
+            "energyBalanceGapEj": 1.9
+          },
+          {
+            "iso3": "CHE",
+            "country": "Switzerland",
+            "householdPriceUsdPerKwh": 0.367,
+            "businessPriceUsdPerKwh": 0.285,
+            "nonFossilElectricityPct": 98.0,
+            "hydroElectricityPct": 53.4,
+            "primaryEnergyConsumptionEj": 1.1,
+            "energyBalanceGapEj": 0.7
+          },
+          {
+            "iso3": "DNK",
+            "country": "Denmark",
+            "householdPriceUsdPerKwh": 0.355,
+            "businessPriceUsdPerKwh": 0.23,
+            "nonFossilElectricityPct": 86.4,
+            "hydroElectricityPct": 0.1,
+            "primaryEnergyConsumptionEj": 0.7,
+            "energyBalanceGapEj": 0.3
+          }
+        ],
+        "italyHasHighestHouseholdPrice": true,
+        "italyHasHighestBusinessPrice": true
+      },
+      "ethiopiaPriceStructure": {
+        "countries": [
+          {
+            "iso3": "ETH",
+            "country": "Ethiopia",
+            "householdPriceUsdPerKwh": 0.006,
+            "businessPriceUsdPerKwh": 0.018,
+            "nonFossilElectricityPct": 100.0,
+            "hydroElectricityPct": 96.4,
+            "primaryEnergyConsumptionEj": 0.3,
+            "energyBalanceGapEj": 0.2
+          },
+          {
+            "iso3": "ISL",
+            "country": "Iceland",
+            "householdPriceUsdPerKwh": 0.179,
+            "businessPriceUsdPerKwh": 0.087,
+            "nonFossilElectricityPct": 100.0,
+            "hydroElectricityPct": 71.2,
+            "primaryEnergyConsumptionEj": 0.2,
+            "energyBalanceGapEj": 0.2
+          },
+          {
+            "iso3": "NOR",
+            "country": "Norway",
+            "householdPriceUsdPerKwh": 0.165,
+            "businessPriceUsdPerKwh": 0.112,
+            "nonFossilElectricityPct": 98.5,
+            "hydroElectricityPct": 89.0,
+            "primaryEnergyConsumptionEj": 2.0,
+            "energyBalanceGapEj": -7.7
+          },
+          {
+            "iso3": "DZA",
+            "country": "Algeria",
+            "householdPriceUsdPerKwh": 0.041,
+            "businessPriceUsdPerKwh": 0.035,
+            "nonFossilElectricityPct": 0.9,
+            "hydroElectricityPct": 0.0,
+            "primaryEnergyConsumptionEj": 2.8,
+            "energyBalanceGapEj": -4.4
+          },
+          {
+            "iso3": "ITA",
+            "country": "Italy",
+            "householdPriceUsdPerKwh": 0.414,
+            "businessPriceUsdPerKwh": 0.411,
+            "nonFossilElectricityPct": 44.5,
+            "hydroElectricityPct": 15.5,
+            "primaryEnergyConsumptionEj": 6.1,
+            "energyBalanceGapEj": 5.2
+          }
+        ],
+        "ethiopiaHasLowestHouseholdPrice": true
+      },
+      "chinaUsConsumption": {
+        "countries": [
+          {
+            "iso3": "CHN",
+            "country": "China",
+            "householdPriceUsdPerKwh": 0.076,
+            "businessPriceUsdPerKwh": 0.108,
+            "nonFossilElectricityPct": 35.2,
+            "hydroElectricityPct": 13.0,
+            "primaryEnergyConsumptionEj": 169.5,
+            "energyBalanceGapEj": 35.5
+          },
+          {
+            "iso3": "USA",
+            "country": "United States",
+            "householdPriceUsdPerKwh": 0.188,
+            "businessPriceUsdPerKwh": 0.149,
+            "nonFossilElectricityPct": 40.9,
+            "hydroElectricityPct": 5.6,
+            "primaryEnergyConsumptionEj": 94.4,
+            "energyBalanceGapEj": -14.0
+          },
+          {
+            "iso3": "IND",
+            "country": "India",
+            "householdPriceUsdPerKwh": 0.077,
+            "businessPriceUsdPerKwh": 0.122,
+            "nonFossilElectricityPct": 21.8,
+            "hydroElectricityPct": 7.8,
+            "primaryEnergyConsumptionEj": 39.0,
+            "energyBalanceGapEj": 16.2
+          },
+          {
+            "iso3": "RUS",
+            "country": "Russia",
+            "householdPriceUsdPerKwh": 0.069,
+            "businessPriceUsdPerKwh": 0.103,
+            "nonFossilElectricityPct": 36.2,
+            "hydroElectricityPct": 17.0,
+            "primaryEnergyConsumptionEj": 31.5,
+            "energyBalanceGapEj": -31.0
+          },
+          {
+            "iso3": "JPN",
+            "country": "Japan",
+            "householdPriceUsdPerKwh": 0.227,
+            "businessPriceUsdPerKwh": 0.201,
+            "nonFossilElectricityPct": 29.8,
+            "hydroElectricityPct": 7.4,
+            "primaryEnergyConsumptionEj": 17.5,
+            "energyBalanceGapEj": 15.3
+          }
+        ],
+        "reportedConsumptionTotalEj": 545.0,
+        "chinaSharePct": 31.1,
+        "unitedStatesSharePct": 17.3,
+        "combinedSharePct": 48.4,
+        "topFiveSharePct": 64.6
+      },
+      "energyBalanceSplit": {
+        "countries": [
+          {
+            "iso3": "CHN",
+            "country": "China",
+            "householdPriceUsdPerKwh": 0.076,
+            "businessPriceUsdPerKwh": 0.108,
+            "nonFossilElectricityPct": 35.2,
+            "hydroElectricityPct": 13.0,
+            "primaryEnergyConsumptionEj": 169.5,
+            "energyBalanceGapEj": 35.5
+          },
+          {
+            "iso3": "RUS",
+            "country": "Russia",
+            "householdPriceUsdPerKwh": 0.069,
+            "businessPriceUsdPerKwh": 0.103,
+            "nonFossilElectricityPct": 36.2,
+            "hydroElectricityPct": 17.0,
+            "primaryEnergyConsumptionEj": 31.5,
+            "energyBalanceGapEj": -31.0
+          },
+          {
+            "iso3": "USA",
+            "country": "United States",
+            "householdPriceUsdPerKwh": 0.188,
+            "businessPriceUsdPerKwh": 0.149,
+            "nonFossilElectricityPct": 40.9,
+            "hydroElectricityPct": 5.6,
+            "primaryEnergyConsumptionEj": 94.4,
+            "energyBalanceGapEj": -14.0
+          },
+          {
+            "iso3": "IND",
+            "country": "India",
+            "householdPriceUsdPerKwh": 0.077,
+            "businessPriceUsdPerKwh": 0.122,
+            "nonFossilElectricityPct": 21.8,
+            "hydroElectricityPct": 7.8,
+            "primaryEnergyConsumptionEj": 39.0,
+            "energyBalanceGapEj": 16.2
+          },
+          {
+            "iso3": "JPN",
+            "country": "Japan",
+            "householdPriceUsdPerKwh": 0.227,
+            "businessPriceUsdPerKwh": 0.201,
+            "nonFossilElectricityPct": 29.8,
+            "hydroElectricityPct": 7.4,
+            "primaryEnergyConsumptionEj": 17.5,
+            "energyBalanceGapEj": 15.3
+          }
+        ],
+        "definition": "Primary energy consumption minus total energy production",
+        "positiveCodes": [
+          "CHN",
+          "IND",
+          "JPN"
+        ],
+        "negativeCodes": [
+          "RUS",
+          "USA"
+        ]
+      }
+    }
+  },
+  "interpretationGuardrails": [
+    "Pearson correlations describe association, not causation.",
+    "Expanded energy balance gap is a screening proxy and is not directly observed net imports.",
+    "National retail prices and energy totals do not substitute for facility tariffs, demand charges, or connection studies.",
+    "Reference periods differ by indicator and dataset scope.",
+    "Assignment 15 and Expanded 50 are scanned separately and never mixed in one ranking.",
+    "External sources provide market context and do not prove the cause of an Atlas pattern."
+  ]
+}
